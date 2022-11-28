@@ -3,7 +3,7 @@ import { GET_PROFILE } from "../type/authType";
 
 export const getProfile = () => async (dispatch) => {
   try {
-    const response = await axios.get("/pokemon/1");
+    const response = await axios.get(`/user/${username}`);
     dispatch({
       type: GET_PROFILE,
       profile: response.data,
