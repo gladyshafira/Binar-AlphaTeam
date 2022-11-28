@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
-import Link from 'next/link'
+// import Link from 'next/link'
 
 
 export const Root = styled.header`
@@ -90,4 +90,3 @@ export const ButtonSignUp = styled.a`
     border-radius: 10px;
     padding: 11px;
 `;
-

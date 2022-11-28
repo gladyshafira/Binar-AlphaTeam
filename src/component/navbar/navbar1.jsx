@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
   Root,
   NavLink,
@@ -18,37 +18,38 @@ import Logout from '@mui/icons-material/Logout'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import { orange } from '@mui/material/colors'
 import Leaderboard from '@mui/icons-material/Leaderboard'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProfile } from '../../store/actions/authActions'
+import { useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { getProfile } from '../../store/actions/authActions'
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Link from 'next/link'
 
 
 export default function Navbar() {
-  // const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState(null)
 
-  // useEffect(() => {
-  //   getProfile()
-  // }, [])
-  // const getProfile = async () => {
-  //   try {
-  //     const { data } = await axios.get('http://localhost:4000/api/user')
-  //     setProfile(data)
-  //   } catch (error) {
-  //     setProfile(null)
-  //   }
-  // }
-
-  const profile = useSelector((state) => state.authReducer.profile)
-  const dispatch = useDispatch()
   useEffect(() => {
-    fetchProfile()
+    getProfile()
   }, [])
-
-  const fetchProfile = async () => {
-    await dispatch(getProfile())
+  const getProfile = async () => {
+    try {
+      const { data } = await axios.get(`http://localhost:4000/api/user/${username}`)
+      setProfile(data.data.username)
+    } catch (error) {
+      setProfile(null)
+    }
   }
+
+  // const profile = useSelector((state) => state.authReducer.profile)
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   fetchProfile()
+  // }, [])
+
+  // const fetchProfile = async () => {
+  //   await dispatch(getProfile())
+  // }
 
   const handleLogout = async () => {
     localStorage.removeItem('_q')
@@ -69,17 +70,17 @@ export default function Navbar() {
       <LinkLogo>LOGO</LinkLogo>
       <DivLink>
         <NavLink href='/'>Home</NavLink>
-        <NavLink href='/games-list'>Game</NavLink>
+        <NavLink href='/#games'>Game</NavLink>
         <NavLink href='/#testimony'>Testimony</NavLink>
         <NavLink href='/#news'>News</NavLink>
       </DivLink>
       <Auth>
-        {profile === null ? (
+        {/* {profile === null ? (
           <>
-            <ButtonSignIn href='/auth/login'>Sign In</ButtonSignIn>
-            <ButtonSignUp href='/auth/register'>Sign Up</ButtonSignUp>
+            <ButtonSignIn to='/auth/login'>Sign In</ButtonSignIn>
+            <ButtonSignUp to='/auth/register'>Sign Up</ButtonSignUp>
           </>
-        ) : (
+        ) : ( */}
           <>
             <span>
                 <Tooltip title="Account settings">
@@ -152,7 +153,7 @@ export default function Navbar() {
                 </MenuItem>
             </Menu>
             </>
-        )}
+        {/* )} */}
       </Auth>
     </Root>
   )

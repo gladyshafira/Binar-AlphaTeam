@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { get } from 'lodash'
-import { API, NODE } from './env'
-axios.defaults.baseURL = 'https://pokeapi.co/api/v2'
+import { API_URL, NODE_ENV } from './env'
+axios.defaults.baseURL = "http://localhost:4000/api"
 axios.defaults.timeout = 180000 // 30 seconds
 axios.interceptors.request.use(
   async (response) => {
@@ -15,7 +15,7 @@ axios.interceptors.request.use(
     originalConfig.headers.Accept = 'application/json'
     originalConfig.headers['Content-Type'] = 'application/json; charset=utf-8'
 
-    if (NODE === 'development') {
+    if (NODE_ENV === 'development') {
       // console.log('[request] >>>', response)
     }
 
@@ -27,7 +27,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (NODE === 'development') {
+    if (NODE_ENV === 'development') {
       // console.log(`error at ${error.config.url}`);
       // console.log(error);
       // console.log(error.response);
