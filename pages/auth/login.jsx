@@ -19,7 +19,6 @@ export default function Login() {
     const data = localStorage.getItem("_q");
     //console.log(token);
     if (data) {
-      //console.log("tes");
       Router.push("/");
     }
   }, []);
@@ -44,7 +43,12 @@ export default function Login() {
       username: value.username,
       password: value.password,
     };
-    await dispatch(doLogin(body));
+    try {
+      await dispatch(doLogin(body));
+      Router.push("/");
+    } catch (error) {
+      toast.error(`Login error: ${error}`);
+    }
   };
   return (
     <Components.Container>

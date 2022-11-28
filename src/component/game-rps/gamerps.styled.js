@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #0b0e1c !important;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100%;
     width: 100%;
   }
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Overpass:wght@100;400;500&display=swap');
@@ -34,7 +34,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 3em;
+  width: 100vw;
   height: 100vh;
 `;
 
