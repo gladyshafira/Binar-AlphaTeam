@@ -1,47 +1,47 @@
-import axios from 'axios'
-import { get } from 'lodash'
-import { API, NODE } from './env'
-axios.defaults.baseURL = 'https://pokeapi.co/api/v2'
-axios.defaults.timeout = 180000 // 30 seconds
+import axios from "axios";
+import { get } from "lodash";
+import { API, NODE } from "./env";
+axios.defaults.baseURL = "http://localhost:4000/api";
+axios.defaults.timeout = 180000; // 30 seconds
 axios.interceptors.request.use(
   async (response) => {
-    const originalConfig = response
-    const cookie = await localStorage.getItem('_q')
-    const userToken = cookie
+    const originalConfig = response;
+    const cookie = await localStorage.getItem("_q");
+    const userToken = cookie;
     if (userToken) {
-      originalConfig.headers.Authorization = `Bearer ${cookie}`
+      originalConfig.headers.Authorization = `Bearer ${cookie}`;
     }
-    originalConfig.headers['Access-Control-Allow-Origin'] = '*'
-    originalConfig.headers.Accept = 'application/json'
-    originalConfig.headers['Content-Type'] = 'application/json; charset=utf-8'
+    originalConfig.headers["Access-Control-Allow-Origin"] = "*";
+    originalConfig.headers.Accept = "application/json";
+    originalConfig.headers["Content-Type"] = "application/json; charset=utf-8";
 
-    if (NODE === 'development') {
+    if (NODE === "development") {
       // console.log('[request] >>>', response)
     }
 
-    return originalConfig
+    return originalConfig;
   },
-  (error) => Promise.reject(error),
-)
+  (error) => Promise.reject(error)
+);
 
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (NODE === 'development') {
+    if (NODE === "development") {
       // console.log(`error at ${error.config.url}`);
       // console.log(error);
       // console.log(error.response);
     }
 
     if (
-      get(error, 'response.data.code', '') === '401' ||
-      get(error, 'response.data.message', '') === 'Unauthorized'
+      get(error, "response.data.code", "") === "401" ||
+      get(error, "response.data.message", "") === "Unauthorized"
     ) {
-      localStorage.removeItem('_q')
-      window.location.reload()
+      localStorage.removeItem("_q");
+      window.location.reload();
     }
-    return Promise.reject(error)
-  },
-)
+    return Promise.reject(error);
+  }
+);
 
-export default axios
+export default axios;

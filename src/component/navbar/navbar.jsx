@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import {
   Root,
   NavLink,
@@ -8,36 +8,36 @@ import {
   ButtonSignIn,
   ButtonSignUp,
   Username,
-} from './styled'
+} from "./styled";
 // import axios from 'axios'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
-import Logout from '@mui/icons-material/Logout'
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import { orange } from '@mui/material/colors'
-import Leaderboard from '@mui/icons-material/Leaderboard'
-import { useDispatch, useSelector } from 'react-redux'
-import { doLogin, getProfile } from '../../store/actions/authActions'
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Logout from "@mui/icons-material/Logout";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { orange } from "@mui/material/colors";
+import Leaderboard from "@mui/icons-material/Leaderboard";
+import { useDispatch, useSelector } from "react-redux";
+import { doLogin, getProfile } from "../../store/actions/authActions";
 export default function Navbar() {
-  const [value, setProfile] = useState(null)
-  const profile = useSelector((state) => state.authReducer.profile)
-  const dispatch = useDispatch()
+  const [value, setProfile] = useState(null);
+  const profile = useSelector((state) => state.authReducer.profile);
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetchProfile()
-  }, [])
+    fetchProfile();
+  }, []);
   const fetchProfile = async () => {
-    await dispatch(getProfile())
-  }
-  const fetchLogin = async () => {
-    const body = {
-      email: value.email,
-      password: value.password,
-    }
-    await dispatch(doLogin(body))
-  }
+    await dispatch(getProfile());
+  };
+  // const fetchLogin = async () => {
+  //   const body = {
+  //     username: value.username,
+  //     password: value.password,
+  //   };
+  //   await dispatch(doLogin(body));
+  // };
   // const handleLogout = async () => {
   //   localStorage.removeItem('_q')
   //   window.location.reload()
@@ -56,18 +56,16 @@ export default function Navbar() {
     <Root>
       <LinkLogo>{profile?.name}</LinkLogo>
       <DivLink>
-        <NavLink href='/'>Home</NavLink>
-        <NavLink href='/#games'>Game</NavLink>
-        <NavLink href='/#testimony'>Testimony</NavLink>
-        <NavLink href='/#news'>News</NavLink>
+        <NavLink href="/">Home</NavLink>
+        <NavLink href="/#games">Game</NavLink>
+        <NavLink href="/#testimony">Testimony</NavLink>
+        <NavLink href="/#news">News</NavLink>
       </DivLink>
       <Auth>
         {/* {profile === null ? ( */}
 
-        <ButtonSignIn to='/auth/login' onClick={fetchLogin}>
-          Sign In
-        </ButtonSignIn>
-        <ButtonSignUp to='/auth/register'>Sign Up</ButtonSignUp>
+        <ButtonSignIn to="/auth/login">Sign In</ButtonSignIn>
+        <ButtonSignUp to="/auth/register">Sign Up</ButtonSignUp>
 
         {/* ) : (
           <>
@@ -137,5 +135,5 @@ export default function Navbar() {
         )} */}
       </Auth>
     </Root>
-  )
+  );
 }
