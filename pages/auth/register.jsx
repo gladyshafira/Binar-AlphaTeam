@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Router from "next/router";
 import * as Components from "./auth.styled";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,6 +12,14 @@ export default function Register() {
     email: "",
     password: "",
   });
+  useEffect(() => {
+    const data = localStorage.getItem("_q");
+    //console.log(token);
+    if (data) {
+      //console.log("tes");
+      Router.push("/");
+    }
+  }, []);
 
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value });

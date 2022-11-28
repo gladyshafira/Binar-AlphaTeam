@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Components from "./auth.styled";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Button, TextField } from "@mui/material/";
+import { useDispatch, useSelector } from "react-redux";
+import { doLogin, getProfile } from "../../src/store/actions/authActions";
+import Router from "next/router";
 
 export default function Login() {
   const [value, setValue] = useState({
@@ -10,21 +13,38 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const data = localStorage.getItem("_q");
+    //console.log(token);
+    if (data) {
+      //console.log("tes");
+      Router.push("/");
+    }
+  }, []);
 
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value });
   };
+  // const handleLogin = async () => {
+  //   try {
+  //     const { data } = await axios.post("http://localhost:4000/user/login", {
+  //       username: value.username,
+  //       password: value.password,
+  //     });
+  //     localStorage.setItem("_q", data.data.token);
+  //     window.location.reload();
+  //   } catch (error) {
+  //     toast.error("Login error!");
+  //   }
+  // };
   const handleLogin = async () => {
-    try {
-      const { data } = await axios.post("http://localhost:5000/user/login", {
-        username: value.username,
-        password: value.password,
-      });
-      localStorage.setItem("_q", data.data.token);
-      window.location.reload();
-    } catch (error) {
-      toast.error("Login error!");
-    }
+    const body = {
+      username: value.username,
+      password: value.password,
+    };
+    await dispatch(doLogin(body));
   };
   return (
     <Components.Container>
