@@ -8,6 +8,7 @@ import { Reset } from "./Reset";
 import Image from "next/image";
 import Player from "./Player";
 import axios from "../../utils/axios";
+import Router from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateScore, UPDATE_SCORE } from "../../store/actions/profileActions";
 import { getProfile, GET_PROFILE } from "../../store/actions/authActions";
@@ -40,14 +41,16 @@ export default function Play() {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
+    const data = localStorage.getItem("_q");
+    //console.log(token);
+    if (!data) {
+      Router.push("/auth/login");
+    }
     getProfile();
   }, []);
 
   useEffect(() => {
     if (game.round == 3) {
-      console.log(`This is round: ${game.round}`);
-      console.log(`User Score: ${game.userScore}`);
-      console.log(`pc score: ${game.pcScore}`);
       if (game.userScore > game.pcScore) {
         setGame({
           ...(game.score += 1),
@@ -64,7 +67,6 @@ export default function Play() {
       });
       // postScore(profile);
     }
-    console.log(`This is a test no: ${game.round}`);
   }, [game.round]);
   // const getProfile = async () => {
   //   try {

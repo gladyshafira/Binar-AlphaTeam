@@ -3,8 +3,6 @@ import * as Components from "./scoreboard.styled";
 import Image from "next/image";
 
 const Scoreboard = ({ score, round }) => {
-  console.log(`Score: ${score}`);
-  console.log(`Round: ${round}`);
   return (
     <Components.Board>
       <Components.Logo>

@@ -45,7 +45,6 @@ export default function Login() {
     };
     try {
       await dispatch(doLogin(body));
-      Router.push("/");
     } catch (error) {
       toast.error(`Login error: ${error}`);
     }
