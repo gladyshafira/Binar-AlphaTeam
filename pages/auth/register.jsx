@@ -16,6 +16,14 @@ export default function Register() {
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value });
   };
+  useEffect(() => {
+    const data = localStorage.getItem("_q");
+    //console.log(token);
+    if (data) {
+      //console.log("tes");
+      Router.push("/");
+    }
+  }, []);
   const handleRegister = async () => {
     try {
       await axios.post("http://localhost:4000/api/register", {

@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react'
-// import image from '../../assets/c-rock-paper-scissor.png'
 import { Image, Section, Subtitle, Title } from './styled'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import { Grid } from '@mui/material'
 import { Container } from '@mui/system'
-// import axios from '../../utility/axios'
-// import { Link } from 'react-router-dom'
-import Link from 'next/link'
+import { useDispatch, useSelector } from 'react-redux'
+import { getGameList } from '../../store/actions/gameActions'
+import axios from '../../utils/axios'
 
 export default function GamesList() {
-  // const [data, setData] = useState([])
+  // const [gameList, setData] = useState([])
   // useEffect(() => {
   //   getData()
   // }, [])
   // const getData = async () => {
-  //   const { data } = await axios.get('http://localhost:5000/game/find')
+  //   const { data } = await axios.get('http://localhost:4000/api/game')
   //   setData(data.data)
   // }
+
+  const gameList = useSelector((state) => state.gameReducer.gameList)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    fetchGameList()
+  }, [])
+  const fetchGameList = async () => {
+    await dispatch(getGameList())
+  }
 
   return (
     <Container>
@@ -29,11 +37,11 @@ export default function GamesList() {
           columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent='center'
           alignItems='center'>
-            {/* {data.map((item, index) => {
-                return ( */}
+            {gameList.map((item, index) => {
+                return (
             <Grid
               item
-              // key={index}
+              key={index}
               xs={6}
               sm={6}
               md={4}
@@ -41,23 +49,22 @@ export default function GamesList() {
               xl={4}
               justifyContent='center'
               alignItems='center'>
-            <Link href="/apps/game">
+            <a href={item?.game_url}>
               <Card
                 sx={{ maxHeight: 270, backgroundColor: '#1e212e' }}>
-                
-                {/* <Image src={item?.icon}></Image> */}
-                <Image src='/assets/c-rock-paper-scissor.png'></Image>
+                <Image src={item?.thumbnail_url}></Image>
+                {/* <Image src='/assets/c-rock-paper-scissor.png'></Image> */}
                 <CardContent>
                   <div>
-                    {/* <Subtitle>{item?.name}</Subtitle> */}
-                    <Subtitle>Rock Paper Scissor</Subtitle>
+                    <Subtitle>{item?.name}</Subtitle>
+                    {/* <Subtitle>Rock Paper Scissor</Subtitle> */}
                   </div>
                 </CardContent>
               </Card>
-              </Link>
+              </a>
             </Grid>
-            {/* )
-        })} */}
+             )
+        })}
         </Grid>
       </Section>
     </Container>

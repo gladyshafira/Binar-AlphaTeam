@@ -1,3 +1,3 @@
-const { NODE_ENV, NEXT_PUBLIC_API_URL } = process.env
-export const API = NEXT_PUBLIC_API_URL
-export const NODE = NODE_ENV
+const { REACT_APP_API_URL, REACT_APP_NODE_ENV } = process.env
+export const API_URL = REACT_APP_API_URL
+export const NODE_ENV = REACT_APP_NODE_ENV

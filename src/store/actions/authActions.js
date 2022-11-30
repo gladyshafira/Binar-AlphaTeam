@@ -2,25 +2,27 @@ import axios from "../../utils/axios";
 import { GET_PROFILE } from "../type/authType";
 import toast from "react-toastify";
 import Router from "next/router";
+import axios from "../../utils/axios";
+import { GET_PROFILE } from "../type/authType";
+import Router from "next/router";
 
-export const getProfile = () => async (dispatch) => {
+export const getProfile = (username) => async (dispatch) => {
   try {
-    const response = await axios.get(`/user/${username}`);
+    const { data } = await axios.get(`/user/${username}`);
+    console.log(data);
     dispatch({
       type: GET_PROFILE,
-      profile: response.data,
+      profile: data.data.username,
     });
   } catch (error) {
     console.log(error);
   }
 };
+
 export const doLogin = (body) => async () => {
   try {
     const { data } = await axios.post("/login", body);
-    localStorage.setItem("_q", data.token);
-    // window.location.reload;
+    localStorage.setItem("_q", data.data.accessToken);
     Router.push("/");
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
