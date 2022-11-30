@@ -12,12 +12,3 @@ export const getGameList = () => async (dispatch) => {
     console.log(error)
   }
 }
-
-const [data, setData] = useState([])
-  useEffect(() => {
-    getData()
-  }, [])
-  const getData = async () => {
-    const { data } = await axios.get('http://localhost:4000/api/game')
-    setData(data.data)
-  }

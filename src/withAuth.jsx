@@ -14,7 +14,7 @@ const withAuth = (Component) => {
     const validate = async () => {
       const token = await localStorage.getItem('_q')
       if (!token) {
-        router.push('/login')
+        router.push('/auth/login')
       }
     }
     return <Component />

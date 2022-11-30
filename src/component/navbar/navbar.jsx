@@ -7,7 +7,7 @@ import {
   Auth,
   ButtonSignIn,
   ButtonSignUp,
-  Username
+  Username,
 } from './styled'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -20,10 +20,9 @@ import { orange } from '@mui/material/colors'
 import Leaderboard from '@mui/icons-material/Leaderboard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../../store/actions/authActions'
-import Avatar from '@mui/material/Avatar';
-import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar'
+import Divider from '@mui/material/Divider'
 import Link from 'next/link'
-
 
 export default function Navbar() {
   // const [profile, setProfile] = useState(null)
@@ -47,29 +46,30 @@ export default function Navbar() {
   }, [])
 
   const fetchProfile = async () => {
-    await dispatch(getProfile())
+    await dispatch(getProfile('tes'))
   }
 
   const handleLogout = async () => {
     localStorage.removeItem('_q')
+    // localStorage.removeItem('user')
     window.location.reload()
   }
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
-
+    setAnchorEl(null)
+  }
+  console.log(profile)
   return (
     <Root>
       <LinkLogo>LOGO</LinkLogo>
       <DivLink>
         <NavLink href='/'>Home</NavLink>
-        <NavLink href='/games-list'>Game</NavLink>
+        <NavLink href='/#games-list'>Game</NavLink>
         <NavLink href='/#testimony'>Testimony</NavLink>
         <NavLink href='/#news'>News</NavLink>
       </DivLink>
@@ -82,76 +82,77 @@ export default function Navbar() {
         ) : (
           <>
             <span>
-                <Tooltip title="Account settings">
+              <Tooltip title='Account settings'>
                 <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    sx={{ ml: 2 }}
-                    aria-controls={open ? 'account-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                >
-                    <Username>{profile?.username}</Username>
-                    <AccountCircleOutlinedIcon sx={{ width: 32, height: 32, color: orange[500] }} />
+                  onClick={handleClick}
+                  size='small'
+                  sx={{ ml: 2 }}
+                  aria-controls={open ? 'account-menu' : undefined}
+                  aria-haspopup='true'
+                  aria-expanded={open ? 'true' : undefined}>
+                  <Username>{profile}</Username>
+                  <AccountCircleOutlinedIcon
+                    sx={{ width: 32, height: 32, color: orange[500] }}
+                  />
                 </IconButton>
-                </Tooltip>
+              </Tooltip>
             </span>
             <Menu
-            anchorEl={anchorEl}
-            id="account-menu"
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-            elevation: 0,
-            sx: {
-                overflow: 'visible',
-                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                mt: 1.5,
-                '& .MuiAvatar-root': {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1,
+              anchorEl={anchorEl}
+              id='account-menu'
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
                 },
-                '&:before': {
-                content: '""',
-                display: 'block',
-                position: 'absolute',
-                top: 0,
-                right: 14,
-                width: 10,
-                height: 10,
-                bgcolor: 'background.paper',
-                transform: 'translateY(-50%) rotate(45deg)',
-                zIndex: 0,
-                },
-            },
-            }}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
-                <Link href="/" sx={{ textDeciration:"none" }}>
-                  <MenuItem>
-                    <Avatar fontSize="small" /> Profile
-                  </MenuItem>
-                </Link>
-                <Divider />
-                <Link href="/leaderboard">
-                  <MenuItem>
-                    <ListItemIcon>
-                        <Leaderboard fontSize="small" />
-                    </ListItemIcon>
-                    Leaderboard
-                  </MenuItem>
-                </Link>
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+              <Link href='/' sx={{ textDeciration: 'none' }}>
                 <MenuItem>
-                  <ListItemIcon onClick={handleLogout}>
-                      <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
+                  <Avatar fontSize='small' /> Profile
                 </MenuItem>
+              </Link>
+              <Divider />
+              <Link href='/leaderboard'>
+                <MenuItem>
+                  <ListItemIcon>
+                    <Leaderboard fontSize='small' />
+                  </ListItemIcon>
+                  Leaderboard
+                </MenuItem>
+              </Link>
+              <MenuItem>
+                <ListItemIcon onClick={handleLogout}>
+                  <Logout fontSize='small' />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
             </Menu>
-            </>
+          </>
         )}
       </Auth>
     </Root>
