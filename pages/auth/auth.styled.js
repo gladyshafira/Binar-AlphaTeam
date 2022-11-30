@@ -89,8 +89,8 @@ export const BtnGoogleLogin = styled.button`
   border-radius: 4px !important;
 `;
 export const Input = styled.input`
-  height: 48px;
-  width: 375px;
+  height: 34px;
+  width: 370px;
   left: 0%;
   right: 0%;
   top: 0px;

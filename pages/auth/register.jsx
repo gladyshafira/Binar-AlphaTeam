@@ -12,6 +12,10 @@ export default function Register() {
     email: "",
     password: "",
   });
+
+  const handleChange = (name) => (e) => {
+    setValue({ ...value, [name]: e.target.value });
+  };
   useEffect(() => {
     const data = localStorage.getItem("_q");
     //console.log(token);
@@ -20,13 +24,11 @@ export default function Register() {
       Router.push("/");
     }
   }, []);
-
-  const handleChange = (name) => (e) => {
-    setValue({ ...value, [name]: e.target.value });
-  };
   const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:5000/user/register", {
+      await axios.post("http://localhost:4000/api/register", {
+        first_name: value.first_name,
+        last_name: value.last_name,
         username: value.username,
         email: value.email,
         password: value.password,
@@ -40,9 +42,24 @@ export default function Register() {
   return (
     <Components.Container>
       <ToastContainer />
+      {/* <Link to='/'>
+        <img src={logo} alt='logo' className={style.logo} />
+      </Link> */}
       <Components.FormContainer>
         <Components.LoginContainer signingIn={signIn}>
           <Components.LoginForm>
+            <Components.Input
+              placeholder="First name"
+              type="text"
+              name="first_name"
+              onChange={handleChange("first_name")}
+            />
+            <Components.Input
+              placeholder="Last name"
+              type="text"
+              name="last_name"
+              onChange={handleChange("last_name")}
+            />
             <Components.Input
               placeholder="Email"
               type="email"
