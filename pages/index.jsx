@@ -1,8 +1,8 @@
-import React from 'react'
-import { Section, Title, Subtitle, Image, PlayButton } from './styled'
-import Grid from '@mui/material/Grid'
-import { Container } from '@mui/system'
-import GamesList from '../src/component/gamesList/gamesList.jsx'
+import React from "react"
+import { Section, Title, Subtitle, Image, PlayButton } from "./styled"
+import Grid from "@mui/material/Grid"
+import { Container } from "@mui/system"
+import GamesList from "../src/component/gamesList/gamesList.jsx"
 
 //Testimony
 import {
@@ -14,11 +14,11 @@ import {
   CustomCard2,
   Subheader,
   Subheader2,
-} from './styled'
-import Avatar from '@mui/material/Avatar'
-import CardContent from '@mui/material/CardContent'
-import { CardHeader } from '@mui/material'
-import StarIcon from '@mui/icons-material/Star'
+} from "./styled"
+import Avatar from "@mui/material/Avatar"
+import CardContent from "@mui/material/CardContent"
+import { CardHeader } from "@mui/material"
+import StarIcon from "@mui/icons-material/Star"
 
 //News
 import {
@@ -29,11 +29,11 @@ import {
   Subtitle5,
   CustomCard3,
   Button,
-} from './styled'
-import { TextField } from '@mui/material'
+} from "./styled"
+import { TextField } from "@mui/material"
 
 //Footer
-import { Divider } from '@mui/material'
+import { Divider } from "@mui/material"
 import {
   FooterLink,
   Heading,
@@ -42,13 +42,13 @@ import {
   Subtitle6,
   Round,
   Copyright,
-} from './styled'
+} from "./styled"
 import {
   FacebookRounded,
   Instagram,
   Twitter,
   LinkedIn,
-} from '@mui/icons-material'
+} from "@mui/icons-material"
 
 export default function Home() {
   return (
@@ -61,9 +61,8 @@ export default function Home() {
               <Title>Rock Paper Scissor</Title>
               <Subtitle>
                 Rock paper scissors (also known by other orderings of the three
-                items, with "rock" sometimes being called "stone," or as
-                Rochambeau, roshambo, or ro-sham-bo) is a hand game originating
-                from China
+                items, with rock sometimes being called stone, or as Rochambeau,
+                roshambo, or ro-sham-bo) is a hand game originating from China
               </Subtitle>
               <PlayButton to='apps/game'>Play Now →</PlayButton>
             </Grid>
@@ -97,7 +96,7 @@ export default function Home() {
               alignItems='center'>
               <CustomCard>
                 <CardHeader
-                  sx={{ color: 'white' }}
+                  sx={{ color: "white" }}
                   avatar={
                     <Avatar
                       src='/static/images/avatar/1.jpg'
@@ -108,14 +107,14 @@ export default function Home() {
                   action={
                     <div>
                       4,5
-                      <StarIcon sx={{ fontSize: 15, color: 'orange' }} />
+                      <StarIcon sx={{ fontSize: 15, color: "orange" }} />
                     </div>
                   }
                 />
                 <CardContent>
                   <Subtitle3>
                     Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
+                    typesetting industry. Lorem Ipsum has been the industrys
                     standard dummy text ever since the 1500s
                   </Subtitle3>
                 </CardContent>
@@ -130,7 +129,7 @@ export default function Home() {
               alignItems='center'>
               <CustomCard2>
                 <CardHeader
-                  sx={{ color: 'white' }}
+                  sx={{ color: "white" }}
                   avatar={
                     <Avatar
                       src='/static/images/avatar/1.jpg'
@@ -141,14 +140,14 @@ export default function Home() {
                   action={
                     <div>
                       4,5
-                      <StarIcon sx={{ fontSize: 15, color: 'orange' }} />
+                      <StarIcon sx={{ fontSize: 15, color: "orange" }} />
                     </div>
                   }
                 />
                 <CardContent>
                   <Subtitle3>
                     Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
+                    typesetting industry. Lorem Ipsum has been the industrys
                     standard dummy text ever since the 1500s
                   </Subtitle3>
                 </CardContent>
@@ -163,7 +162,7 @@ export default function Home() {
               alignItems='center'>
               <CustomCard2>
                 <CardHeader
-                  sx={{ color: 'white' }}
+                  sx={{ color: "white" }}
                   avatar={
                     <Avatar
                       src='/static/images/avatar/1.jpg'
@@ -174,14 +173,14 @@ export default function Home() {
                   action={
                     <div>
                       4,5
-                      <StarIcon sx={{ fontSize: 15, color: 'orange' }} />
+                      <StarIcon sx={{ fontSize: 15, color: "orange" }} />
                     </div>
                   }
                 />
                 <CardContent>
                   <Subtitle3>
                     Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
+                    typesetting industry. Lorem Ipsum has been the industrys
                     standard dummy text ever since the 1500s
                   </Subtitle3>
                 </CardContent>
@@ -274,16 +273,16 @@ export default function Home() {
                 <Grid item xs={2} sm={4} md={4}>
                   <div>
                     <Round>
-                      <FacebookRounded sx={{ color: 'white' }} />
+                      <FacebookRounded sx={{ color: "white" }} />
                     </Round>
                     <Round>
-                      <Instagram sx={{ color: 'white' }} />
+                      <Instagram sx={{ color: "white" }} />
                     </Round>
                     <Round>
-                      <Twitter sx={{ color: 'white' }} />
+                      <Twitter sx={{ color: "white" }} />
                     </Round>
                     <Round>
-                      <LinkedIn sx={{ color: 'white' }} />
+                      <LinkedIn sx={{ color: "white" }} />
                     </Round>
                   </div>
                 </Grid>
@@ -292,7 +291,7 @@ export default function Home() {
           </Grid>
         </Container>
         <Divider color='grey' />
-        <Container sx={{ justifyContent: 'center' }}>
+        <Container sx={{ justifyContent: "center" }}>
           <Copyright>Copyright ® 2022 All Rights Reserved</Copyright>
         </Container>
       </Section5>

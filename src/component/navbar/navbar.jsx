@@ -44,7 +44,7 @@ export default function Navbar() {
     fetchProfile()
   }, [])
   const fetchProfile = async () => {
-    await dispatch(getProfile('tes'))
+    await dispatch(getProfile())
   }
 
   const handleLogout = async () => {

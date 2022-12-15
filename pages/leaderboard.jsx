@@ -10,9 +10,8 @@ import TableRow from '@mui/material/TableRow'
 import { Container } from '@mui/material'
 import { Title2 } from './styled'
 import { styled } from '@mui/material/styles'
-import { getLeaderboard } from '../src/store/actions/leaderboardActions'
-import { useDispatch, useSelector } from 'react-redux'
-
+// import { getLeaderboard } from '../src/store/actions/leaderboardActions'
+// import { useDispatch, useSelector } from 'react-redux'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -70,32 +69,32 @@ const rows = [
   },
 ]
 
-  // const leaderboard = useSelector((state) => state.leaderboardActions.leaderboard)
-  // const fetchLeaderboard = async () => {
-  //   await dispatch(getLeaderboard(id))
-  // }
+// const leaderboard = useSelector((state) => state.leaderboardActions.leaderboard)
+// const fetchLeaderboard = async () => {
+//   await dispatch(getLeaderboard(id))
+// }
 
-  const columns = [
-    {
-      id: 'gameId',
-      label: 'ID Game',
-      minWidth: 100,
-      format: (value) => value.toLocaleString('en-US'),
-    },
-    {
-      id: 'userId',
-      label: 'ID User',
-      minWidth: 100,
-      format: (value) => value.toLocaleString('en-US'),
-    },
-    { id: 'username', label: 'Username', minWidth: 100 },
-    {
-      id: 'score',
-      label: 'Score',
-      minWidth: 100,
-      format: (value) => value.toLocaleString('en-US'),
-    },
-  ]
+const columns = [
+  {
+    id: 'gameId',
+    label: 'ID Game',
+    minWidth: 100,
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: 'userId',
+    label: 'ID User',
+    minWidth: 100,
+    format: (value) => value.toLocaleString('en-US'),
+  },
+  { id: 'username', label: 'Username', minWidth: 100 },
+  {
+    id: 'score',
+    label: 'Score',
+    minWidth: 100,
+    format: (value) => value.toLocaleString('en-US'),
+  },
+]
 
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0)
@@ -130,17 +129,15 @@ export default function StickyHeadTable() {
             </TableHead>
             <TableBody>
               {rows.map((item) => {
-                  return (
-                    <TableRow
-                      // key={index}
-                      >
-                      <TableCell>{item.id_game}</TableCell>
-                      <TableCell>{item.id_user}</TableCell>
-                      <TableCell>{item.username}</TableCell>
-                      <TableCell>{item.score}</TableCell>
-                    </TableRow>
-                  )
-                })}
+                return (
+                  <TableRow key={item.id_game}>
+                    <TableCell>{item.id_game}</TableCell>
+                    <TableCell>{item.id_user}</TableCell>
+                    <TableCell>{item.username}</TableCell>
+                    <TableCell>{item.score}</TableCell>
+                  </TableRow>
+                )
+              })}
             </TableBody>
           </Table>
         </TableContainer>

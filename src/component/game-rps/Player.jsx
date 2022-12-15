@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
 const Player = ({ myChoice, pcChoice, gameResult }) => {
   return (
@@ -6,13 +6,13 @@ const Player = ({ myChoice, pcChoice, gameResult }) => {
       {gameResult === "" ? (
         <h4>Select a Choice</h4>
       ) : (
-        <h4>Player's Choice: {myChoice}</h4>
+        <h4>Players Choice: {myChoice}</h4>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Player;
+export default Player
 
 /*
  my choice:{myChoice} <br />

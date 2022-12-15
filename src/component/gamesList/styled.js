@@ -27,6 +27,7 @@ export const Subtitle = styled.h4`
   text-align: center;
   margin: 0;
 `
+
 export const Image = styled.img`
   justify-content: center;
   align-items: center;
@@ -35,6 +36,7 @@ export const Image = styled.img`
   padding: 2rem 2rem 0;
   border-radius: 5%;
 `
+
 export const PlayButton = styled.a`
   background-color: orange;
   color: white;
