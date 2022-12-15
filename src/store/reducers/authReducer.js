@@ -1,4 +1,4 @@
-import { GET_PROFILE } from '../type/authType'
+import { GET_PROFILE } from "../type/authType"
 
 const initialState = {
   profile: null,

@@ -1,8 +1,8 @@
-import { UPDATE_SCORE } from "../type/profileType";
+import { UPDATE_SCORE } from "../type/profileType"
 
 const initialState = {
   profile: null,
-};
+}
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -10,9 +10,9 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.profile,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
-export default profileReducer;
+}
+export default profileReducer

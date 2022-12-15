@@ -1,4 +1,4 @@
-import { createTheme, colors, responsiveFontSizes } from '@mui/material'
+import { createTheme, colors, responsiveFontSizes } from "@mui/material"
 
 let theme = createTheme({
   palette: {
@@ -7,10 +7,10 @@ let theme = createTheme({
       paper: colors.common.white,
     },
     primary: {
-      main: '#00479B',
+      main: "#00479B",
     },
     secondary: {
-      main: '#ffffff',
+      main: "#ffffff",
     },
     text: {
       primary: colors.blueGrey[900],
@@ -28,8 +28,8 @@ let theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
               borderRadius: 15,
             },
           },
@@ -39,7 +39,7 @@ let theme = createTheme({
     MuiAvatar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#00479B',
+          backgroundColor: "#00479B",
         },
       },
     },
@@ -59,10 +59,10 @@ let theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Roboto', 'sans-serif'].join(','),
+    fontFamily: ["Roboto", "sans-serif"].join(","),
     button: {
-      textTransform: 'capitalize',
-      fontSize: '18px',
+      textTransform: "capitalize",
+      fontSize: "18px",
     },
   },
 })

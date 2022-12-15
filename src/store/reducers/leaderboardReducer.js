@@ -1,4 +1,4 @@
-import { GET_LEADERBOARD } from '../type/leaderboardType'
+import { GET_LEADERBOARD } from "../type/leaderboardType"
 
 const initialState = {
   leaderboard: [],
@@ -16,4 +16,3 @@ const leaderboardReducer = (state = initialState, action) => {
   }
 }
 export default leaderboardReducer
-

@@ -1,4 +1,4 @@
-import { GET_GAMELIST } from '../type/gamelistType'
+import { GET_GAMELIST } from "../type/gamelistType"
 
 const initialState = {
   gameList: [],
@@ -16,4 +16,3 @@ const gameReducer = (state = initialState, action) => {
   }
 }
 export default gameReducer
-

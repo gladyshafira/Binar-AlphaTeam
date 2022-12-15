@@ -1,5 +1,5 @@
-import axios from '../../utils/axios'
-import { GET_LEADERBOARD } from '../type/leaderboardType'
+import axios from "../../utils/axios"
+import { GET_LEADERBOARD } from "../type/leaderboardType"
 
 export const getLeaderboard = () => async (dispatch) => {
   try {
