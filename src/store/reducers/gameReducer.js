@@ -1,4 +1,4 @@
-import { GET_GAMELIST } from "../type/gamelistType"
+import { GET_GAMELIST } from "../type/gameListType"
 
 const initialState = {
   gameList: [],
