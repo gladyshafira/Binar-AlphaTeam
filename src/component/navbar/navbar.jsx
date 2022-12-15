@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import React, { useState, useEffect } from "react";
 import {
   Root,
   NavLink,
@@ -24,20 +23,6 @@ import { getProfile } from '../../store/actions/authActions'
 import Avatar from '@mui/material/Avatar'
 import Divider from '@mui/material/Divider'
 import Link from 'next/link'
-
-} from "./styled";
-// import axios from 'axios'
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import Logout from "@mui/icons-material/Logout";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { orange } from "@mui/material/colors";
-import Leaderboard from "@mui/icons-material/Leaderboard";
-import { useDispatch, useSelector } from "react-redux";
-import { doLogin, getProfile } from "../../store/actions/authActions";
 export default function Navbar() {
   // const [profile, setProfile] = useState(null)
 

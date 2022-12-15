@@ -1,11 +1,6 @@
 import axios from "../../utils/axios";
 import { GET_PROFILE } from "../type/authType";
-import toast from "react-toastify";
 import Router from "next/router";
-import axios from "../../utils/axios";
-import { GET_PROFILE } from "../type/authType";
-import Router from "next/router";
-
 export const getProfile = (username) => async (dispatch) => {
   try {
     const { data } = await axios.get(`/user/${username}`);
