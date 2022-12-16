@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { Image, Section, Subtitle, Title } from "./styled"
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
@@ -6,9 +6,9 @@ import { Grid } from "@mui/material"
 import { Container } from "@mui/system"
 import { useDispatch, useSelector } from "react-redux"
 import { getGameList } from "../../store/actions/gameActions"
-import axios from "../../utils/axios"
+// import axios from "../../utils/axios"
 import HoverVideoPlayer from "react-hover-video-player"
-import { ImageAspectRatioRounded } from "@mui/icons-material"
+// import { ImageAspectRatioRounded } from "@mui/icons-material"
 import Link from "next/link"
 
 export default function GamesList() {
@@ -21,14 +21,14 @@ export default function GamesList() {
   //   setData(data.data)
   // }
 
-  const gameList = useSelector((state) => state.gameReducer.gameList)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    fetchGameList()
-  }, [])
-  const fetchGameList = async () => {
-    await dispatch(getGameList())
-  }
+  // const gameList = useSelector((state) => state.gameReducer.gameList)
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   fetchGameList()
+  // }, [])
+  // const fetchGameList = async () => {
+  //   await dispatch(getGameList())
+  // }
 
   return (
     <Container>
