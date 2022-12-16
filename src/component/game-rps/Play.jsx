@@ -10,7 +10,7 @@ import Player from "./Player"
 import axios from "../../utils/axios"
 import Router from "next/router"
 import { useDispatch, useSelector } from "react-redux"
-import { updateScore, UPDATE_SCORE } from "../../store/actions/profileActions"
+import { updateScore, UPDATE_SCORE } from "../../store/actions/scoreActions"
 import { getProfile, GET_PROFILE } from "../../store/actions/authActions"
 
 export default function Play() {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -10,8 +10,8 @@ import TableRow from '@mui/material/TableRow'
 import { Container } from '@mui/material'
 import { Title2 } from './styled'
 import { styled } from '@mui/material/styles'
-// import { getLeaderboard } from '../src/store/actions/leaderboardActions'
-// import { useDispatch, useSelector } from 'react-redux'
+import { getScoreboard } from '../src/store/actions/scoreboardActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,46 +32,43 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }))
-// function createData(gameId, userId, username, score) {
-//   return { gameId, userId, username, score }
+
+
+// const score = useSelector((state) => state.scoreboardReducer.scoreboard)
+// const dispatch = useDispatch()
+// useEffect(() => {
+//   fetchScoreboard()
+// }, [])
+// const fetchScoreboard = async () => {
+//   await dispatch(getScoreboard())
 // }
 
 const rows = [
   {
     id_game: 2,
-    id_user: 1,
-    username: 'testimony',
     score: 90,
   },
   {
     id_game: 1,
-    id_user: 1,
-    username: 'testimony',
     score: 80,
   },
   {
     id_game: 4,
-    id_user: 1,
-    username: 'testimony',
     score: 90,
   },
   {
     id_game: 6,
-    id_user: 1,
-    username: 'testimony',
     score: 100,
   },
   {
     id_game: 1,
-    id_user: 1,
-    username: 'testimony',
     score: 50,
   },
 ]
 
-// const leaderboard = useSelector((state) => state.leaderboardActions.leaderboard)
-// const fetchLeaderboard = async () => {
-//   await dispatch(getLeaderboard(id))
+// const scoreboard = useSelector((state) => state.scoreboardActions.scoreboard)
+// const fetchScoreboard = async () => {
+//   await dispatch(getScoreboard())
 // }
 
 const columns = [
@@ -81,13 +78,6 @@ const columns = [
     minWidth: 100,
     format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    id: 'userId',
-    label: 'ID User',
-    minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  { id: 'username', label: 'Username', minWidth: 100 },
   {
     id: 'score',
     label: 'Score',
@@ -111,7 +101,7 @@ export default function StickyHeadTable() {
 
   return (
     <Container>
-      <Title2>Leaderboard</Title2>
+      <Title2>Scoreboard</Title2>
       <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label='sticky table'>
@@ -132,8 +122,6 @@ export default function StickyHeadTable() {
                 return (
                   <TableRow key={item.id_game}>
                     <TableCell>{item.id_game}</TableCell>
-                    <TableCell>{item.id_user}</TableCell>
-                    <TableCell>{item.username}</TableCell>
                     <TableCell>{item.score}</TableCell>
                   </TableRow>
                 )

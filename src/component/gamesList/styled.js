@@ -32,7 +32,7 @@ export const Image = styled.img`
   justify-content: center;
   align-items: center;
   width: 305px;
-  height: 160px;
+  height: 172px;
   padding: 2rem 2rem 0;
   border-radius: 5%;
 `

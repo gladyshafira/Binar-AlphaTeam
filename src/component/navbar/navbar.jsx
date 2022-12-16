@@ -61,13 +61,13 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null)
   }
-  console.log(profile)
+
   return (
     <Root>
       <LinkLogo>LOGO</LinkLogo>
       <DivLink>
         <NavLink href='/'>Home</NavLink>
-        <NavLink href='/#games-list'>Game</NavLink>
+        <NavLink href='/games-list'>Game</NavLink>
         <NavLink href='/#testimony'>Testimony</NavLink>
         <NavLink href='/#news'>News</NavLink>
       </DivLink>
@@ -135,12 +135,12 @@ export default function Navbar() {
                 </MenuItem>
               </Link>
               <Divider />
-              <Link href='/leaderboard'>
+              <Link href='/scoreboard'>
                 <MenuItem>
                   <ListItemIcon>
                     <Leaderboard fontSize='small' />
                   </ListItemIcon>
-                  Leaderboard
+                  Scoreboard
                 </MenuItem>
               </Link>
               <MenuItem>

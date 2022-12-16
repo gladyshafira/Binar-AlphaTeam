@@ -21,14 +21,14 @@ export default function GamesList() {
   //   setData(data.data)
   // }
 
-  // const gameList = useSelector((state) => state.gameReducer.gameList)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   fetchGameList()
-  // }, [])
-  // const fetchGameList = async () => {
-  //   await dispatch(getGameList())
-  // }
+  const gameList = useSelector((state) => state.gameReducer.gameList)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    fetchGameList()
+  }, [])
+  const fetchGameList = async () => {
+    await dispatch(getGameList())
+  }
 
   return (
     <Container>
@@ -49,12 +49,15 @@ export default function GamesList() {
             xl={4}
             justifyContent='center'
             alignItems='center'>
-            <Link href='/apps/game'>
+            <Link href='/games/rps'>
               <Card sx={{ maxHeight: 270, backgroundColor: "#1e212e" }}>
                 <HoverVideoPlayer
-                  videoSrc='https://www.youtube.com/embed/fhOLg3vL_sI'
+                  // videoSrc='https://www.youtube.com/embed/fhOLg3vL_sI'
+                  videoSrc="/assets/Moto-X3M-Gameplay.mp4"
                   style={{
                     // Make the image expand to cover the video's dimensions
+                    justifyContent: "center",
+                    alignItems: "center",
                     width: "305px",
                     height: "160px",
                     padding: "2rem 2rem 0",
@@ -69,10 +72,6 @@ export default function GamesList() {
                     </div>
                   }
                 />
-                {/* <Image src='/assets/c-rock-paper-scissor.png'></Image> */}
-                {/* <Video>
-                <source src="https://www.youtube.com/embed/fhOLg3vL_sI" type="video/mp4" />
-                </Video> */}
                 <CardContent>
                   <div>
                     <Subtitle>Rock Paper Scissor</Subtitle>
