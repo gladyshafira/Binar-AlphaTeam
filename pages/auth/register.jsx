@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import Router from 'next/router'
-import * as Components from './auth.styled'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { useDispatch } from 'react-redux'
-import { doRegister } from '../../src/store/actions/authActions'
+import React, { useState, useEffect } from "react"
+import Router from "next/router"
+import * as Components from "../../styles/auth.module"
+import axios from "axios"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { useDispatch } from "react-redux"
+import { doRegister } from "../../src/store/actions/authActions"
 
 export default function Register() {
   const dispatch = useDispatch()
   const [signIn, toggle] = useState(true)
   const [value, setValue] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   })
 
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value })
   }
   useEffect(() => {
-    const data = localStorage.getItem('_q')
+    const data = localStorage.getItem("_q")
     //console.log(token);
     if (data) {
       //console.log("tes");
-      Router.push('/')
+      Router.push("/")
     }
   }, [])
   const handleRegister = async () => {
@@ -54,31 +54,31 @@ export default function Register() {
               placeholder='First name'
               type='text'
               name='first_name'
-              onChange={handleChange('first_name')}
+              onChange={handleChange("first_name")}
             />
             <Components.Input
               placeholder='Last name'
               type='text'
               name='last_name'
-              onChange={handleChange('last_name')}
+              onChange={handleChange("last_name")}
             />
             <Components.Input
               placeholder='Email'
               type='email'
               name='email'
-              onChange={handleChange('email')}
+              onChange={handleChange("email")}
             />
             <Components.Input
               placeholder='Username'
               name='username'
               type='text'
-              onChange={handleChange('username')}
+              onChange={handleChange("username")}
             />
             <Components.Input
               placeholder='Password'
               name='password'
               type='password'
-              onChange={handleChange('password')}
+              onChange={handleChange("password")}
             />
             <Components.BtnLogin variant='contained' onClick={handleRegister}>
               Register →

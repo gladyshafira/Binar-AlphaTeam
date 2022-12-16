@@ -1,5 +1,11 @@
 import React from "react"
-import { Section, Title, Subtitle, Image, PlayButton } from "./styled"
+import {
+  Section,
+  Title,
+  Subtitle,
+  Image,
+  PlayButton,
+} from "../styles/index.module"
 import Grid from "@mui/material/Grid"
 import { Container } from "@mui/system"
 import GamesList from "../src/component/gamesList/gamesList.jsx"
@@ -14,7 +20,7 @@ import {
   CustomCard2,
   Subheader,
   Subheader2,
-} from "./styled"
+} from "../styles/index.module"
 import Avatar from "@mui/material/Avatar"
 import CardContent from "@mui/material/CardContent"
 import { CardHeader } from "@mui/material"
@@ -29,7 +35,7 @@ import {
   Subtitle5,
   CustomCard3,
   Button,
-} from "./styled"
+} from "../styles/index.module"
 import { TextField } from "@mui/material"
 
 //Footer
@@ -42,7 +48,7 @@ import {
   Subtitle6,
   Round,
   Copyright,
-} from "./styled"
+} from "../styles/index.module"
 import {
   FacebookRounded,
   Instagram,

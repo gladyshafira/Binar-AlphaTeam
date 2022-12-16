@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import * as Components from "./rps.styled"
+import {Container} from "../../styles/rps.module"
 import Play from "../../src/component/game-rps/Play"
 import { useSelector } from "react-redux"
 
@@ -8,9 +8,9 @@ function GameRps() {
   const [score, setScore] = useState(0)
   const profile = useSelector((state) => state.authReducer.profile)
   return (
-    <Components.Container>
+    <Container>
       <Play setMyChoice={setMyChoice} />
-    </Components.Container>
+    </Container>
   )
 }
 export default GameRps

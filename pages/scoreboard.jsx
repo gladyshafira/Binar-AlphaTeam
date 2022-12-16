@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import Paper from '@mui/material/Paper'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TablePagination from '@mui/material/TablePagination'
-import TableRow from '@mui/material/TableRow'
-import { Container } from '@mui/material'
-import { Title2 } from './styled'
-import { styled } from '@mui/material/styles'
-import { getScoreboard } from '../src/store/actions/scoreboardActions'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from "react"
+import Paper from "@mui/material/Paper"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableCell, { tableCellClasses } from "@mui/material/TableCell"
+import TableContainer from "@mui/material/TableContainer"
+import TableHead from "@mui/material/TableHead"
+import TablePagination from "@mui/material/TablePagination"
+import TableRow from "@mui/material/TableRow"
+import { Container } from "@mui/material"
+import { Title2 } from "../styles/index.module"
+import { styled } from "@mui/material/styles"
+import { getScoreboard } from "../src/store/actions/scoreboardActions"
+import { useDispatch, useSelector } from "react-redux"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,15 +24,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }))
-
 
 // const score = useSelector((state) => state.scoreboardReducer.scoreboard)
 // const dispatch = useDispatch()
@@ -73,16 +72,16 @@ const rows = [
 
 const columns = [
   {
-    id: 'gameId',
-    label: 'ID Game',
+    id: "gameId",
+    label: "ID Game",
     minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: 'score',
-    label: 'Score',
+    id: "score",
+    label: "Score",
     minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value) => value.toLocaleString("en-US"),
   },
 ]
 
@@ -102,7 +101,7 @@ export default function StickyHeadTable() {
   return (
     <Container>
       <Title2>Scoreboard</Title2>
-      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
