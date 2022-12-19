@@ -7,18 +7,13 @@ import React, { useState, useEffect } from "react";
 import {
   TxtField,
   ProfileContainer,
-  EditProfileBtn,
   EditProfileForm,
   EditProfileLinkBtn,
 } from "../../styles/me.module";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../../src/store/actions/authActions";
-import {
-  updateProfile,
-  changeAvatar,
-} from "../../src/store/actions/userActions";
+import { changeAvatar } from "../../src/store/actions/authActions";
 
-import { Title, Input } from "../../styles/me.module";
+import { Title } from "../../styles/me.module";
 import Modal from "../../src/component/profile/avatarUrl";
 import withAuth from "../../src/withAuth";
 
@@ -35,22 +30,15 @@ function Me() {
   const { email, profile, avatar, first_name, last_name } = useSelector(
     (state) => state.authReducer
   );
-  const userInfo = useSelector((state) => state.authReducer);
 
   console.log(`userinfo is: ${profile}`);
 
-  const changeProfile = (e) => {
-    try {
-      dispatch(updateProfile(username, email, first_name, last_name));
-    } catch (error) {}
-  };
   const [showModal, setShowModal] = useState(false);
-  const submitAvatarUrl = async () => {
-    const body = {
-      avatar: state.avatar,
-    };
+  const handleAvatar = async (e) => {
     try {
-      dispatch(changeAvatar(body));
+      const file = e.target.files[0];
+      // dispatch(changeAvatar(body));
+      changeAvatar(file);
     } catch (error) {}
   };
 
@@ -75,7 +63,19 @@ function Me() {
             alignItems="center"
             columns={{ xs: 6, sm: 6, md: 6, lg: 6, xl: 6 }}
             maxWidth="100%">
-            <Avatar alt="userAvatar" src={avatar}></Avatar>
+            <label htmlFor="upload-avatar">
+              <Avatar
+                alt="userAvatar"
+                src={avatar}
+                sx={{ height: 150, width: 150 }}
+              />
+              <input
+                type="file"
+                hidden
+                id="upload-avatar"
+                onChange={handleAvatar}
+              />
+            </label>
           </Grid>
           <Grid item columns={{ xs: 2, sm: 4, md: 4 }} sx={{ p: 5 }}>
             <EditProfileForm>

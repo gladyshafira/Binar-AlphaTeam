@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import * as Components from "../../styles/auth.module";
-import axios from "axios";
+
 import { ToastContainer, toast } from "react-toastify";
-import { Button, TextField } from "@mui/material/";
 import { useDispatch, useSelector } from "react-redux";
-import { doLogin, getProfile } from "../../src/store/actions/authActions";
+import { doLogin } from "../../src/store/actions/authActions";
 import Router from "next/router";
 
 export default function Login() {
@@ -17,7 +16,7 @@ export default function Login() {
 
   useEffect(() => {
     const data = localStorage.getItem("_q");
-    //console.log(token);
+
     if (data) {
       Router.push("/");
     }
@@ -26,18 +25,7 @@ export default function Login() {
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value });
   };
-  // const handleLogin = async () => {
-  //   try {
-  //     const { data } = await axios.post("http://localhost:4000/user/login", {
-  //       username: value.username,
-  //       password: value.password,
-  //     });
-  //     localStorage.setItem("_q", data.data.token);
-  //     window.location.reload();
-  //   } catch (error) {
-  //     toast.error("Login error!");
-  //   }
-  // };
+
   const handleLogin = async () => {
     const body = {
       username: value.username,
@@ -49,17 +37,14 @@ export default function Login() {
   };
   return (
     <Components.Container>
-      {/* <Link to='/'>
-        <img src={logo} alt='logo' className={style.logo} />
-      </Link> */}
       <ToastContainer />
       <Components.FormContainer>
         <Components.LoginContainer>
           <Components.LoginForm>
-            <Components.BtnGoogleLogin variant="contained">
+            {/* <Components.BtnGoogleLogin variant="contained">
               Sign In with Google
             </Components.BtnGoogleLogin>
-            <Components.Rectangle>or</Components.Rectangle>
+            <Components.Rectangle>or</Components.Rectangle> */}
             <Components.Input
               placeholder="Username"
               type="string"

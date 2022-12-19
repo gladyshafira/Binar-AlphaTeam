@@ -38,11 +38,3 @@ export const updateProfile = (username, first_name, last_name, email) => {
     }
   };
 };
-export const changeAvatar = async (body) => {
-  try {
-    await axios.put("/user/avatar", body);
-    toast.success("Avatar changed");
-  } catch (error) {
-    toast.error(error.message);
-  }
-};

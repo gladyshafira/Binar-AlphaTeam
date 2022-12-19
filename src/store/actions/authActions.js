@@ -54,3 +54,49 @@ export const resetPassword = async (body) => {
     toast.error(error.message);
   }
 };
+
+export const changeAvatar = async (file) => {
+  try {
+    console.log(file);
+    const PROXY_URL = "https://proxy.cors.sh/";
+    const URL =
+      "https://api.imgbb.com/1/upload?key=f5ed0b938d0675b503b35ba0d597add9";
+    const bodyFormData = new FormData();
+    bodyFormData.append("image", file);
+    const config = {
+      headers: {
+        "Content-Type":
+          "multipart/form-data; boundary=<calculated when request is sent>",
+      },
+    };
+    const { data } = await axios.post(PROXY_URL + URL, bodyFormData, config);
+    console.log(data);
+    return data.data;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+// export const changeAvatar = async (file) => {
+//   try {
+//     const bodyFormData = new FormData();
+//     bodyFormData.append("image", file);
+//     const config = {
+//       headers: { "Content-Type": "multipart/form-data" },
+//     };
+//     const rawResponse = await fetch(
+//       "https://api.imgbb.com/1/upload?key=f5ed0b938d0675b503b35ba0d597add9",
+//       {
+//         method: "post",
+//         body: bodyFormData,
+//         headers: config,
+//       }
+//     );
+
+//     const content = await rawResponse.json();
+//     console.log(content);
+//     return content.data;
+//   } catch (error) {
+//     toast.error(error.message);
+//   }
+// };

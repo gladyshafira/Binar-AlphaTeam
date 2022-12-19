@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import { Container } from "@mui/system";
+
 import { Button, TextField, Avatar } from "@mui/material/";
 
 import React, { useState, useEffect } from "react";
@@ -11,13 +11,13 @@ import {
   EditAvatarForm,
 } from "../../styles/me.module";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../../src/store/actions/authActions";
+
 import {
   updateProfile,
   changeAvatar,
 } from "../../src/store/actions/userActions";
 
-import { Title, Input } from "../../styles/me.module";
+import { Title } from "../../styles/me.module";
 import Modal from "../../src/component/profile/avatarUrl";
 import withAuth from "../../src/withAuth";
 
@@ -91,25 +91,6 @@ function Me() {
             columns={{ xs: 6, sm: 6, md: 6, lg: 6, xl: 6 }}
             maxWidth="100%">
             <Avatar alt="userAvatar" src={avatar}></Avatar>
-            <Input
-              type="file"
-              name="avatar"
-              id="avatar"
-              accept="image/*"></Input>
-            <EditAvatarForm>
-              <TxtField
-                id="avatar"
-                label="Avatar URL"
-                name="avatar"
-                variant="filled"
-                onChange={handleChange}></TxtField>
-              <EditProfileBtn
-                variant="outlined"
-                sx={{ ml: 5 }}
-                onClick={submitAvatarUrl}>
-                Change Avatar
-              </EditProfileBtn>
-            </EditAvatarForm>
           </Grid>
           <Grid item columns={{ xs: 2, sm: 4, md: 4 }} sx={{ p: 5 }}>
             <EditProfileForm>
