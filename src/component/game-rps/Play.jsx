@@ -5,9 +5,8 @@ import Scoreboard from "./Scoreboard";
 import Result from "./Result";
 import * as Choice from "./choice.styled";
 import { Reset } from "./Reset";
-import Image from "next/image";
 import Player from "./Player";
-import axios from "../../utils/axios";
+
 import Router from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateScore } from "../../store/actions/scoreActions";
@@ -71,12 +70,12 @@ export default function Play() {
     }
   }, [game.round]);
 
-  const fetchProfile = async () => {
-    await dispatch(getProfile());
-  };
-  useEffect(() => {
-    fetchProfile();
-  }, []);
+  // const fetchProfile = async () => {
+  //   await dispatch(getProfile());
+  // };
+  // useEffect(() => {
+  //   fetchProfile();
+  // }, []);
   const userId = useSelector((state) => state.authReducer.user_id);
 
   const postScore = async () => {
@@ -96,10 +95,6 @@ export default function Play() {
     const pcChoice = ["rock", "paper", "scissors"][
       Math.floor(Math.random() * 3)
     ];
-
-    // useEffect(() => {
-
-    // });
 
     if (game.round < 3) {
       if (myChoice === "rock" && pcChoice === "scissors") {
@@ -166,19 +161,22 @@ export default function Play() {
                   data-id="rock"
                   onClick={play}
                   width="96"
-                  height="92"></Choice.Icon>
+                  height="92"
+                  alt="rock"></Choice.Icon>
                 <Choice.Icon
                   src="/assets/kertas.svg"
                   data-id="paper"
                   onClick={play}
                   width="96"
-                  height="92"></Choice.Icon>
+                  height="92"
+                  alt="paper"></Choice.Icon>
                 <Choice.Icon
                   src="/assets/gunting.svg"
                   data-id="scissors"
                   onClick={play}
                   width="96"
-                  height="92"></Choice.Icon>
+                  height="92"
+                  alt="scissors"></Choice.Icon>
                 <Player {...game}></Player>
               </Components.PlayerChoice>
             </Components.Game>

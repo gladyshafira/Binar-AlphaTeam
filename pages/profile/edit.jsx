@@ -18,7 +18,6 @@ import {
 } from "../../src/store/actions/userActions";
 
 import { Title } from "../../styles/me.module";
-import Modal from "../../src/component/profile/avatarUrl";
 import withAuth from "../../src/withAuth";
 
 function Me() {
@@ -42,7 +41,7 @@ function Me() {
     userInfo ? userInfo.first_name : ""
   );
   const [lastName, setLastName] = useState(userInfo ? userInfo.last_name : "");
-  const [avatarUrl, setavatar] = useState(userInfo ? userInfo.avatar : "");
+
   const handleChange = (e) => {
     let { name, state } = e.target;
     if (e.target.name === "avatar") {
@@ -59,19 +58,9 @@ function Me() {
       dispatch(updateProfile(username, email, first_name, last_name));
     } catch (error) {}
   };
-  const [showModal, setShowModal] = useState(false);
-  const submitAvatarUrl = async () => {
-    const body = {
-      avatar: state.avatar,
-    };
-    try {
-      dispatch(changeAvatar(body));
-    } catch (error) {}
-  };
 
   return (
     <React.Fragment>
-      <Modal onClose={() => setShowModal(false)} show={showModal}></Modal>
       <ProfileContainer maxWidth="sm">
         <Grid
           container

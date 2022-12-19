@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeAvatar } from "../../src/store/actions/authActions";
 
 import { Title } from "../../styles/me.module";
-import Modal from "../../src/component/profile/avatarUrl";
 import withAuth from "../../src/withAuth";
 
 function Me() {
@@ -33,7 +32,6 @@ function Me() {
 
   console.log(`userinfo is: ${profile}`);
 
-  const [showModal, setShowModal] = useState(false);
   const handleAvatar = async (e) => {
     try {
       const file = e.target.files[0];
@@ -44,7 +42,6 @@ function Me() {
 
   return (
     <React.Fragment>
-      <Modal onClose={() => setShowModal(false)} show={showModal}></Modal>
       <ProfileContainer maxWidth="sm">
         <Grid
           container

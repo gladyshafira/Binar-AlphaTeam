@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const withAuth = (Component) => {
-  return () => {
+  const AuthenticatedComponent = () => {
     const router = useRouter();
     let ignore = true;
     React.useEffect(() => {
@@ -17,8 +17,10 @@ const withAuth = (Component) => {
         router.push("/auth/login");
       }
     };
-    return <Component />;
+    return <Component />; // Render whatever you want while the authentication occurs
   };
+
+  return AuthenticatedComponent;
 };
 
 export default withAuth;

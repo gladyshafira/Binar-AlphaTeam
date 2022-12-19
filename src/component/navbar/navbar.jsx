@@ -149,7 +149,7 @@ export default function Navbar() {
               <MenuItem>
                 <ListItemIcon onClick={handleLogout}>
                   <Logout fontSize="small" />
-                  Logout
+                  &nbsp;&nbsp;&nbsp; Logout
                 </ListItemIcon>
               </MenuItem>
             </Menu>

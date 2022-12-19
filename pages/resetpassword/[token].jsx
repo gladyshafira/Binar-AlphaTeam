@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import * as Components from "../../../styles/auth.module";
+import * as Components from "../../styles/auth.module";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Title } from "@mui/material/";
 import { useDispatch, useSelector } from "react-redux";
-import { resetPassword } from "../../../src/store/actions/authActions";
+import { resetPassword } from "../../src/store/actions/authActions";
 import Router from "next/router";
 
 export default function Reset() {
