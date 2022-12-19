@@ -1,14 +1,12 @@
-import axios from "../../utils/axios"
-import { UPDATE_SCORE } from "../type/scoreType"
+import axios from "../../utils/axios";
+import { UPDATE_SCORE } from "../type/scoreType";
+import { toast } from "react-toastify";
 
-export const updateScore = () => async (dispatch) => {
+export const updateScore = async (body) => {
   try {
-    const response = await axios.post("/score", body)
-    dispatch({
-      type: UPDATE_SCORE,
-      score: response.data,
-    })
+    await axios.put("/score", body);
+    toast.success("Score updated");
   } catch (error) {
-    console.log(error)
+    toast.error(error.message);
   }
-}
+};
