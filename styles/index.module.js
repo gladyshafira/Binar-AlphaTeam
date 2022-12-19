@@ -1,10 +1,9 @@
-import style from 'styled-components';
+import style from "styled-components";
 
 //Testimony
-import Card from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
-
+import Card from "@mui/material/Card";
+import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 
 export const Section = style.section`
     height: 100vh;
@@ -49,7 +48,6 @@ export const PlayButton = style.a`
     padding: 11px 20px;
 `;
 
-
 //Testimony
 export const Section3 = style.section`
     height: 70vh;
@@ -92,35 +90,35 @@ export const Subtitle3 = style.h6`
 `;
 
 export const CustomCard = styled(Card)`
-    height: 212px;
-    width: 350px;
-    background-color: #1E212E;
-    padding: 10px;
-    border: 2px solid orange; 
-    border-radius: 10px;
+  height: 212px;
+  width: 350px;
+  background-color: #1e212e;
+  padding: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
 `;
 
 export const CustomCard2 = styled(Card)`
-    height: 212px;
-    width: 350px;
-    background-color: #575B81;
-    padding: 10px;
-    border: 2px solid white; 
-    border-radius: 10px;
+  height: 212px;
+  width: 350px;
+  background-color: #575b81;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
 `;
 
 export const Subheader = styled(Typography)`
-    font-weight: 400;
-    font-size: 0.8rem;
-    line-height: 1.43;
-    color: #546e7a;
-`
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.43;
+  color: #546e7a;
+`;
 export const Subheader2 = styled(Typography)`
-    font-weight: 400;
-    font-size: 0.8rem;
-    line-height: 1.43;
-    color: #1E212EC5;
-`
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.43;
+  color: #1e212ec5;
+`;
 
 //News
 export const Section4 = style.section`
@@ -173,11 +171,11 @@ export const Subtitle5 = style.h6`
 `;
 
 export const CustomCard3 = styled(Card)`
-    width: 1092px;
-    height: 169px;
-    background-color: #575B81;
-    padding: 30px;
-    border-radius: 15px;
+  width: 1092px;
+  height: 169px;
+  background-color: #575b81;
+  padding: 30px;
+  border-radius: 15px;
 `;
 
 export const Button = style.a`
@@ -198,7 +196,7 @@ export const Section5 = style.section`
     background: black;
     height: 45vh;
     justify-content: center;
-`
+`;
 
 export const Title5 = style.h1`
     font-family: 'Poppins';
@@ -207,7 +205,7 @@ export const Title5 = style.h1`
     font-size: 24px;
     line-height: 153.5%;
     color: #FFFFFF;
-`
+`;
 export const Subtitle6 = style.h4`
     font-family: 'Poppins';
     font-style: normal;
@@ -215,7 +213,7 @@ export const Subtitle6 = style.h4`
     font-size: 16px;
     line-height: 24px;
     color: #FFFFFF;
-`
+`;
 
 export const FooterLink = style.a`
     display : flex;
@@ -235,7 +233,7 @@ export const FooterLink = style.a`
         color: orange;
         transition: 200ms ease-in;
     }
-`
+`;
 
 export const Heading = style.h4`
 font-family: 'Poppins';
@@ -244,7 +242,7 @@ font-weight: 500;
 font-size: 17px;
 line-height: 26px;
 color: #FFFFFF;
-`
+`;
 export const Copyright = style.p`
     font-family: 'Poppins';
     font-style: normal;
@@ -254,9 +252,7 @@ export const Copyright = style.p`
     color: #FFFFFF;
     justify-content: center;
     align-items: center;
-`
+`;
 export const Round = style.a`
     margin : 10px;
-`
-
-
+`;

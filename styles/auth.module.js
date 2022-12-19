@@ -48,8 +48,24 @@ export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100em;
+`;
+export const ForgotContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px;
+
+  width: 435px;
+  height: 425px;
+  left: 452px;
+  top: 209px;
+
+  /* 2 */
+
+  background: #181b26;
 `;
 export const BtnLogin = styled(Button)`
   /* Auto layout */

@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import * as Components from "../../styles/auth.module";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { Button, TextField } from "@mui/material/";
+import { Title } from "@mui/material/";
 import { useDispatch, useSelector } from "react-redux";
-import { doLogin, getProfile } from "../../src/store/actions/authActions";
+import { forgotPassword } from "../../src/store/actions/authActions";
 import Router from "next/router";
 
-export default function Login() {
+export default function Forgot() {
   const [value, setValue] = useState({
-    username: "",
     email: "",
-    password: "",
   });
   const dispatch = useDispatch();
 
@@ -26,7 +24,17 @@ export default function Login() {
   const handleChange = (name) => (e) => {
     setValue({ ...value, [name]: e.target.value });
   };
-  // const handleLogin = async () => {
+
+  const changeConfirmPassword = (name) => (e) => {
+    setValue({ ...value, [name]: e.target.value });
+    if (!value) {
+      toast.error("Confirm Password tidak boleh kosong");
+    } else if (password !== value) {
+      toast.error("password tidak cocok");
+    } else {
+    }
+  };
+  // const handlePassword = async () => {
   //   try {
   //     const { data } = await axios.post("http://localhost:4000/user/login", {
   //       username: value.username,
@@ -38,13 +46,14 @@ export default function Login() {
   //     toast.error("Login error!");
   //   }
   // };
-  const handleLogin = async () => {
-    const body = {
-      username: value.username,
-      password: value.password,
-    };
+  const handlePassword = async () => {
     try {
-      await dispatch(doLogin(body));
+      dispatch(
+        resetPassword({
+          password: value.password,
+          token: match.params.token,
+        })
+      );
     } catch (error) {}
   };
   return (
@@ -54,26 +63,22 @@ export default function Login() {
       </Link> */}
       <ToastContainer />
       <Components.FormContainer>
-        <Components.LoginContainer>
+        <Components.ForgotContainer>
           <Components.LoginForm>
-            <Components.BtnGoogleLogin variant="contained">
-              Sign In with Google
-            </Components.BtnGoogleLogin>
-            <Components.Rectangle>or</Components.Rectangle>
             <Components.Input
-              placeholder="Username"
-              type="string"
-              onChange={handleChange("username")}
-              required
-            />
-            <Components.Input
-              placeholder="Password"
+              placeholder="New password"
               type="password"
               onChange={handleChange("password")}
               required
             />
-            <Components.BtnLogin variant="contained" onClick={handleLogin}>
-              Sign In →
+            <Components.Input
+              placeholder="Confirm password"
+              type="password"
+              onChange={handleChange("confirmPassword")}
+              required
+            />
+            <Components.BtnLogin variant="contained" onClick={handlePassword}>
+              Reset Password
             </Components.BtnLogin>
             <p>
               Not a member?&nbsp;
@@ -81,11 +86,8 @@ export default function Login() {
                 Create an account.
               </Components.CreateAccount>
             </p>
-            <Components.CreateAccount href="/auth/forgot">
-              Forgot your password?
-            </Components.CreateAccount>
           </Components.LoginForm>
-        </Components.LoginContainer>
+        </Components.ForgotContainer>
       </Components.FormContainer>
     </Components.Container>
   );
