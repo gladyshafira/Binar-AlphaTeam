@@ -13,7 +13,7 @@ export const getProfile = () => async (dispatch) => {
       last_name: data.user.last_name,
       email: data.user.email,
       avatar: data.user.avatar,
-    });
+    })
   } catch (error) {
     console.log(error);
   }

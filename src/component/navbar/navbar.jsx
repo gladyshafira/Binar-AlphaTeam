@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 import {
   Root,
   NavLink,
@@ -8,39 +8,25 @@ import {
   ButtonSignIn,
   ButtonSignUp,
   Username,
-} from "./styled";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import Logout from "@mui/icons-material/Logout";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { orange } from "@mui/material/colors";
-import Leaderboard from "@mui/icons-material/Leaderboard";
-import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../../store/actions/authActions";
-import Avatar from "@mui/material/Avatar";
-import Divider from "@mui/material/Divider";
-import Link from "next/link";
+} from "./styled"
+import Menu from "@mui/material/Menu"
+import MenuItem from "@mui/material/MenuItem"
+import ListItemIcon from "@mui/material/ListItemIcon"
+import IconButton from "@mui/material/IconButton"
+import Tooltip from "@mui/material/Tooltip"
+import Logout from "@mui/icons-material/Logout"
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined"
+import { orange } from "@mui/material/colors"
+import Leaderboard from "@mui/icons-material/Leaderboard"
+import { useDispatch, useSelector } from "react-redux"
+import { getProfile } from "../../store/actions/authActions"
+import Avatar from "@mui/material/Avatar"
+import Divider from "@mui/material/Divider"
+import Link from "next/link"
 export default function Navbar() {
-  // const [profile, setProfile] = useState(null)
-
-  // useEffect(() => {
-  //   getProfile()
-  // }, [])
-  // const getProfile = async () => {
-  //   try {
-  //     const { data } = await axios.get('http://localhost:4000/api/user')
-  //     setProfile(data)
-  //   } catch (error) {
-  //     setProfile(null)
-  //   }
-  // }
-
-  const profile = useSelector((state) => state.authReducer.profile);
-  const avatar = useSelector((state) => state.authReducer.avatar);
-  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.authReducer.profile)
+  const avatar = useSelector((state) => state.authReducer.avatar)
+  const dispatch = useDispatch()
   useEffect(() => {
     fetchProfile();
   }, []);
@@ -49,7 +35,7 @@ export default function Navbar() {
   };
 
   const handleLogout = async () => {
-    localStorage.removeItem("_q");
+    localStorage.removeItem("_q")
     // localStorage.removeItem('user')
     window.location.reload();
   };
@@ -87,9 +73,9 @@ export default function Navbar() {
                   size="small"
                   sx={{ ml: 2 }}
                   aria-controls={open ? "account-menu" : undefined}
-                  aria-haspopup="true"
+                  aria-haspopup='true'
                   aria-expanded={open ? "true" : undefined}>
-                  <Username>{profile}</Username>
+                  <Username>{profile && profile}</Username>
                   <Avatar
                     sx={{ width: 32, height: 32, color: orange[500] }}
                     src={avatar}
@@ -131,7 +117,7 @@ export default function Navbar() {
               }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-              <Link href="/" sx={{ textDeciration: "none" }}>
+              <Link href="/profile/me" sx={{ textDecoration: "none" }}>
                 <MenuItem>
                   <Avatar fontSize="small" src={avatar} alt="userAvatar" />{" "}
                   Profile
@@ -141,15 +127,15 @@ export default function Navbar() {
               <Link href="/scoreboard">
                 <MenuItem>
                   <ListItemIcon>
-                    <Leaderboard fontSize="small" />
+                    <Leaderboard fontSize='small' />
+                    &nbsp;&nbsp;&nbsp;&nbsp;Scoreboard
                   </ListItemIcon>
-                  Scoreboard
                 </MenuItem>
               </Link>
               <MenuItem>
                 <ListItemIcon onClick={handleLogout}>
                   <Logout fontSize="small" />
-                  &nbsp;&nbsp;&nbsp; Logout
+                  &nbsp;&nbsp;&nbsp;&nbsp;Logout
                 </ListItemIcon>
               </MenuItem>
             </Menu>
@@ -157,5 +143,5 @@ export default function Navbar() {
         )}
       </Auth>
     </Root>
-  );
+  )
 }

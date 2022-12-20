@@ -70,7 +70,7 @@ export default function Home() {
                 items, with rock sometimes being called stone, or as Rochambeau,
                 roshambo, or ro-sham-bo) is a hand game originating from China
               </Subtitle>
-              <PlayButton to='apps/game'>Play Now →</PlayButton>
+              <PlayButton href='games/rps/play'>Play Now →</PlayButton>
             </Grid>
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <Image src='/assets/rock-paper-scissor.png' alt='image'></Image>
@@ -95,9 +95,11 @@ export default function Home() {
             alignItems='center'>
             <Grid
               item
-              xs={2}
-              sm={4}
+              xs={6}
+              sm={6}
               md={4}
+              lg={4}
+              xl={4}
               justifyContent='center'
               alignItems='center'>
               <CustomCard>
@@ -128,9 +130,11 @@ export default function Home() {
             </Grid>
             <Grid
               item
-              xs={2}
-              sm={4}
+              xs={6}
+              sm={6}
               md={4}
+              lg={4}
+              xl={4}
               justifyContent='center'
               alignItems='center'>
               <CustomCard2>
@@ -161,9 +165,11 @@ export default function Home() {
             </Grid>
             <Grid
               item
-              xs={2}
-              sm={4}
+              xs={6}
+              sm={6}
               md={4}
+              lg={4}
+              xl={4}
               justifyContent='center'
               alignItems='center'>
               <CustomCard2>

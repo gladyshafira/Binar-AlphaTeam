@@ -4,6 +4,7 @@ import style from "styled-components";
 import Card from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import Link from "next/link";
 
 export const Section = style.section`
     height: 100vh;
@@ -37,7 +38,7 @@ export const Image = style.img`
     max-width: 100%;
     height: auto;
 `;
-export const PlayButton = style.a`
+export const PlayButton = style(Link)`
     background-color: orange;
     color: white;
     font-family: 'Poppins';

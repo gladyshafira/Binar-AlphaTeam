@@ -14,7 +14,7 @@ const authReducer = (state = initialState, action) => {
         last_name: action.last_name,
         email: action.email,
         avatar: action.avatar,
-      };
+      }
     default:
       return state;
   }
