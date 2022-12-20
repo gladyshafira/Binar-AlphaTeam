@@ -10,6 +10,10 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: action.profile,
+        first_name: action.first_name,
+        last_name: action.last_name,
+        email: action.email,
+        avatar: action.avatar,
       }
     default:
       return state

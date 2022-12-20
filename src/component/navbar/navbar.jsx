@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react"
 import {
   Root,
   NavLink,
@@ -8,37 +8,24 @@ import {
   ButtonSignIn,
   ButtonSignUp,
   Username,
-} from './styled'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import IconButton from '@mui/material/IconButton'
-import Tooltip from '@mui/material/Tooltip'
-import Logout from '@mui/icons-material/Logout'
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import { orange } from '@mui/material/colors'
-import Leaderboard from '@mui/icons-material/Leaderboard'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProfile } from '../../store/actions/authActions'
-import Avatar from '@mui/material/Avatar'
-import Divider from '@mui/material/Divider'
-import Link from 'next/link'
+} from "./styled"
+import Menu from "@mui/material/Menu"
+import MenuItem from "@mui/material/MenuItem"
+import ListItemIcon from "@mui/material/ListItemIcon"
+import IconButton from "@mui/material/IconButton"
+import Tooltip from "@mui/material/Tooltip"
+import Logout from "@mui/icons-material/Logout"
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined"
+import { orange } from "@mui/material/colors"
+import Leaderboard from "@mui/icons-material/Leaderboard"
+import { useDispatch, useSelector } from "react-redux"
+import { getProfile } from "../../store/actions/authActions"
+import Avatar from "@mui/material/Avatar"
+import Divider from "@mui/material/Divider"
+import Link from "next/link"
 export default function Navbar() {
-  // const [profile, setProfile] = useState(null)
-
-  // useEffect(() => {
-  //   getProfile()
-  // }, [])
-  // const getProfile = async () => {
-  //   try {
-  //     const { data } = await axios.get('http://localhost:4000/api/user')
-  //     setProfile(data)
-  //   } catch (error) {
-  //     setProfile(null)
-  //   }
-  // }
-
   const profile = useSelector((state) => state.authReducer.profile)
+  const avatar = useSelector((state) => state.authReducer.avatar)
   const dispatch = useDispatch()
   useEffect(() => {
     fetchProfile()
@@ -48,7 +35,7 @@ export default function Navbar() {
   }
 
   const handleLogout = async () => {
-    localStorage.removeItem('_q')
+    localStorage.removeItem("_q")
     // localStorage.removeItem('user')
     window.location.reload()
   }
@@ -85,12 +72,13 @@ export default function Navbar() {
                   onClick={handleClick}
                   size='small'
                   sx={{ ml: 2 }}
-                  aria-controls={open ? 'account-menu' : undefined}
+                  aria-controls={open ? "account-menu" : undefined}
                   aria-haspopup='true'
-                  aria-expanded={open ? 'true' : undefined}>
-                  <Username>{profile}</Username>
-                  <AccountCircleOutlinedIcon
+                  aria-expanded={open ? "true" : undefined}>
+                  <Username>{profile && profile}</Username>
+                  <Avatar
                     sx={{ width: 32, height: 32, color: orange[500] }}
+                    src={avatar}
                   />
                 </IconButton>
               </Tooltip>
@@ -104,34 +92,37 @@ export default function Navbar() {
               PaperProps={{
                 elevation: 0,
                 sx: {
-                  overflow: 'visible',
-                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  overflow: "visible",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
-                  '& .MuiAvatar-root': {
+                  "& .MuiAvatar-root": {
                     width: 32,
                     height: 32,
                     ml: -0.5,
                     mr: 1,
                   },
-                  '&:before': {
+                  "&:before": {
                     content: '""',
-                    display: 'block',
-                    position: 'absolute',
+                    display: "block",
+                    position: "absolute",
                     top: 0,
                     right: 14,
                     width: 10,
                     height: 10,
-                    bgcolor: 'background.paper',
-                    transform: 'translateY(-50%) rotate(45deg)',
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
                     zIndex: 0,
                   },
                 },
               }}
-              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
-              <Link href='/' sx={{ textDeciration: 'none' }}>
+              transformOrigin={{ horizontal: "right", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
+              <Link href='/'>
                 <MenuItem>
-                  <Avatar fontSize='small' /> Profile
+                <ListItemIcon>
+                  <Avatar fontSize="small" src={avatar} alt="userAvatar" />
+                  &nbsp;Profile
+                </ListItemIcon>
                 </MenuItem>
               </Link>
               <Divider />
@@ -139,20 +130,20 @@ export default function Navbar() {
                 <MenuItem>
                   <ListItemIcon>
                     <Leaderboard fontSize='small' />
+                    &nbsp;&nbsp;&nbsp;&nbsp;Scoreboard
                   </ListItemIcon>
-                  Scoreboard
                 </MenuItem>
               </Link>
               <MenuItem>
                 <ListItemIcon onClick={handleLogout}>
-                  <Logout fontSize='small' />
+                  <Logout fontSize="small" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;Logout
                 </ListItemIcon>
-                Logout
               </MenuItem>
             </Menu>
           </>
         )}
       </Auth>
     </Root>
-  );
+  )
 }
