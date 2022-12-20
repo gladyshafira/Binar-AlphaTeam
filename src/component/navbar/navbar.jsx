@@ -28,49 +28,49 @@ export default function Navbar() {
   const avatar = useSelector((state) => state.authReducer.avatar)
   const dispatch = useDispatch()
   useEffect(() => {
-    fetchProfile()
-  }, [])
+    fetchProfile();
+  }, []);
   const fetchProfile = async () => {
-    await dispatch(getProfile())
-  }
+    await dispatch(getProfile());
+  };
 
   const handleLogout = async () => {
     localStorage.removeItem("_q")
     // localStorage.removeItem('user')
-    window.location.reload()
-  }
+    window.location.reload();
+  };
 
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const open = Boolean(anchorEl)
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <Root>
       <LinkLogo>LOGO</LinkLogo>
       <DivLink>
-        <NavLink href='/'>Home</NavLink>
-        <NavLink href='/games-list'>Game</NavLink>
-        <NavLink href='/#testimony'>Testimony</NavLink>
-        <NavLink href='/#news'>News</NavLink>
+        <NavLink href="/">Home</NavLink>
+        <NavLink href="/games-list">Game</NavLink>
+        <NavLink href="/#testimony">Testimony</NavLink>
+        <NavLink href="/#news">News</NavLink>
       </DivLink>
       <Auth>
         {profile === null ? (
           <>
-            <ButtonSignIn href='/auth/login'>Sign In</ButtonSignIn>
-            <ButtonSignUp href='/auth/register'>Sign Up</ButtonSignUp>
+            <ButtonSignIn href="/auth/login">Sign In</ButtonSignIn>
+            <ButtonSignUp href="/auth/register">Sign Up</ButtonSignUp>
           </>
         ) : (
           <>
             <span>
-              <Tooltip title='Account settings'>
+              <Tooltip title="Account settings">
                 <IconButton
                   onClick={handleClick}
-                  size='small'
+                  size="small"
                   sx={{ ml: 2 }}
                   aria-controls={open ? "account-menu" : undefined}
                   aria-haspopup='true'
@@ -85,7 +85,7 @@ export default function Navbar() {
             </span>
             <Menu
               anchorEl={anchorEl}
-              id='account-menu'
+              id="account-menu"
               open={open}
               onClose={handleClose}
               onClick={handleClose}
@@ -117,16 +117,14 @@ export default function Navbar() {
               }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-              <Link href='/'>
+              <Link href="/profile/me" sx={{ textDecoration: "none" }}>
                 <MenuItem>
-                <ListItemIcon>
-                  <Avatar fontSize="small" src={avatar} alt="userAvatar" />
-                  &nbsp;Profile
-                </ListItemIcon>
+                  <Avatar fontSize="small" src={avatar} alt="userAvatar" />{" "}
+                  Profile
                 </MenuItem>
               </Link>
               <Divider />
-              <Link href='/scoreboard'>
+              <Link href="/scoreboard">
                 <MenuItem>
                   <ListItemIcon>
                     <Leaderboard fontSize='small' />

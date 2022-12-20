@@ -1,8 +1,8 @@
-import { GET_PROFILE } from "../type/authType"
+import { GET_PROFILE, CHANGE_PROFILE } from "../type/authType";
 
 const initialState = {
   profile: null,
-}
+};
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,7 +16,7 @@ const authReducer = (state = initialState, action) => {
         avatar: action.avatar,
       }
     default:
-      return state
+      return state;
   }
-}
-export default authReducer
+};
+export default authReducer;

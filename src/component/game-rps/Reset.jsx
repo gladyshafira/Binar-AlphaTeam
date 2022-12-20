@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import * as Components from "./reset.styled";
 
 export const Reset = ({ onClick, myChoice }) => {

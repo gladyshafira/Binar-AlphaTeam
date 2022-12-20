@@ -70,7 +70,7 @@ export default function Home() {
                 items, with rock sometimes being called stone, or as Rochambeau,
                 roshambo, or ro-sham-bo) is a hand game originating from China
               </Subtitle>
-              <PlayButton to='games/rps/play'>Play Now →</PlayButton>
+              <PlayButton href='games/rps/play'>Play Now →</PlayButton>
             </Grid>
             <Grid item xs={12} sm={12} md={5} lg={5} xl={5}>
               <Image src='/assets/rock-paper-scissor.png' alt='image'></Image>
