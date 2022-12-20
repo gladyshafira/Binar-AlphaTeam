@@ -7,11 +7,12 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TablePagination from "@mui/material/TablePagination"
 import TableRow from "@mui/material/TableRow"
-import { Container } from "@mui/material"
+import { Button, Container } from "@mui/material"
 import { Title2 } from "../styles/index.module"
 import { styled } from "@mui/material/styles"
 import { getScoreboard } from "../src/store/actions/scoreboardActions"
 import { useDispatch, useSelector } from "react-redux"
+import withAuth from "../src/withAuth"
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -33,43 +34,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }))
 
-// const score = useSelector((state) => state.scoreboardReducer.scoreboard)
-// const dispatch = useDispatch()
-// useEffect(() => {
-//   fetchScoreboard()
-// }, [])
-// const fetchScoreboard = async () => {
-//   await dispatch(getScoreboard())
-// }
-
-const rows = [
-  {
-    id_game: 2,
-    score: 90,
-  },
-  {
-    id_game: 1,
-    score: 80,
-  },
-  {
-    id_game: 4,
-    score: 90,
-  },
-  {
-    id_game: 6,
-    score: 100,
-  },
-  {
-    id_game: 1,
-    score: 50,
-  },
-]
-
-// const scoreboard = useSelector((state) => state.scoreboardActions.scoreboard)
-// const fetchScoreboard = async () => {
-//   await dispatch(getScoreboard())
-// }
-
 const columns = [
   {
     id: "gameId",
@@ -85,10 +49,17 @@ const columns = [
   },
 ]
 
-export default function StickyHeadTable() {
+function Scoreboard() {
   const [page, setPage] = React.useState(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(10)
-
+  const rows = useSelector((state) => state.scoreboardReducer.scoreboard)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    fetchScoreboard()
+  }, [])
+  const fetchScoreboard = async () => {
+    await dispatch(getScoreboard())
+  }
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
@@ -101,7 +72,7 @@ export default function StickyHeadTable() {
   return (
     <Container>
       <Title2>Scoreboard</Title2>
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <Paper sx={{ width: "80vh", overflow: "hidden", margin: "auto" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
@@ -117,10 +88,10 @@ export default function StickyHeadTable() {
               </StyledTableRow>
             </TableHead>
             <TableBody>
-              {rows.map((item) => {
+              {rows.map((item, i) => {
                 return (
-                  <TableRow key={item.id_game}>
-                    <TableCell>{item.id_game}</TableCell>
+                  <TableRow key={i}>
+                    <TableCell>{item.gameId}</TableCell>
                     <TableCell>{item.score}</TableCell>
                   </TableRow>
                 )
@@ -141,3 +112,4 @@ export default function StickyHeadTable() {
     </Container>
   )
 }
+export default withAuth(Scoreboard)

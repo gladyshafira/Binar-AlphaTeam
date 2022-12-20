@@ -1,38 +1,63 @@
 import style from 'styled-components';
 
+import Link from 'next/link';
+
 export const Section = style.section`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 `;
 
-export const Title = style.h1`
+export const Title = style.h3`
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 18px;
     line-height: 180.5%;
     color: #FFFFFF;
-    align-items: center;
 `;
 
 export const Subtitle = style.h4`
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 208.5%;
+    font-size: 14px;
+    line-height: 180.5%;
     color: #FFFFFF;
-    align-items: center;
-    margin-bottom : 30px;
+    margin-bottom : 20px;
 `;
-export const Image = style.img`
-    max-width: 100%;
-    height: auto;
+
+export const Title2 = style.h3`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 180.5%;
+    color: #FFFFFF;
 `;
-export const PlayButton = style.a`
+
+export const Subtitle2 = style.h6`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 187.5%;
+    color: #FFFFFF;
+    text-align: center;
+    margin : 10px 10px 40px 10px;
+`;
+
+export const Subtitle3 = style.h6`
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 187.5%;
+    color: #FFFFFF;
+    margin:0;
+`;
+
+export const PlayButton = style(Link)`
     background-color: orange;
     color: white;
     font-family: 'Poppins';
@@ -41,4 +66,5 @@ export const PlayButton = style.a`
     line-height: 24px;
     border-radius: 10px;
     padding: 11px 20px;
+    position: absolute;
 `;
