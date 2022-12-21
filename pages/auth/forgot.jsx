@@ -6,6 +6,7 @@ import { Title } from "@mui/material/";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotPassword } from "../../src/store/actions/authActions";
 import Router from "next/router";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Forgot() {
   const [value, setValue] = useState({
