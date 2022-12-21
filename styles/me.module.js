@@ -27,6 +27,7 @@ export const TxtField = styled(TextField)`
   }
   & .Mui-disabled {
     color: white !important;
+    -webkit-text-fill-color: white;
   }
   & .css-10botns-MuiInputBase-input-MuiFilledInput-input.Mui-disabled {
     opacity: 1;

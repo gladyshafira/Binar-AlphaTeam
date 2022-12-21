@@ -58,17 +58,17 @@ function Me() {
 
   return (
     <React.Fragment>
-      <ProfileContainer maxWidth="sm">
+      <ProfileContainer maxWidth="lg">
         <ToastContainer />
         <Grid
           container
           spacing={5}
           p="2 5"
-          columns={1}
+          columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 3 }}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ mt: 0 }}>
+          sx={{ m: 0, pt: 1 / 2 }}>
           <Title>Edit Profile</Title>
           <Grid
             container
