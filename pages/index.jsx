@@ -5,6 +5,7 @@ import {
   Subtitle,
   Image,
   PlayButton,
+  CustomContainer,
 } from "../styles/index.module"
 import Grid from "@mui/material/Grid"
 import { Container } from "@mui/system"
@@ -90,14 +91,13 @@ export default function Home() {
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
             justifyContent='center'
             alignItems='center'>
             <Grid
               item
-              xs={6}
-              sm={6}
-              md={4}
+              xs={12}
+              sm={12}
+              md={6}
               lg={4}
               xl={4}
               justifyContent='center'
@@ -130,9 +130,9 @@ export default function Home() {
             </Grid>
             <Grid
               item
-              xs={6}
-              sm={6}
-              md={4}
+              xs={12}
+              sm={12}
+              md={6}
               lg={4}
               xl={4}
               justifyContent='center'
@@ -165,9 +165,9 @@ export default function Home() {
             </Grid>
             <Grid
               item
-              xs={6}
-              sm={6}
-              md={4}
+              xs={12}
+              sm={12}
+              md={6}
               lg={4}
               xl={4}
               justifyContent='center'
@@ -211,7 +211,6 @@ export default function Home() {
             <CardContent>
               <Grid
                 container
-                columns={{ xs: 4, sm: 8, md: 12 }}
                 justifyContent='space-between'
                 alignItems='center'>
                 <Grid item xs={4} sm={7} md={7}>
@@ -225,13 +224,12 @@ export default function Home() {
                 <Grid item xs={4} sm={5} md={5}>
                   <Grid
                     container
-                    columns={{ xs: 4, sm: 8, md: 12 }}
                     justifyContent='space-between'
                     alignItems='center'
                     bgcolor='white'
                     padding='10px 10px 10px 30px'
                     borderRadius='8px'>
-                    <Grid item xs={2} sm={9} md={9} alignItems='center'>
+                    <Grid item xs={6} sm={7} md={7} alignItems='center'>
                       <TextField
                         id='standard-basic'
                         label='Enter Email Address'
@@ -239,7 +237,7 @@ export default function Home() {
                         size='small'
                       />
                     </Grid>
-                    <Grid item xs={2} sm={3} md={3} alignItems='center'>
+                    <Grid item xs={6} sm={5} md={5} alignItems='center'>
                       <Button>Continue</Button>
                     </Grid>
                   </Grid>

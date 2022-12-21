@@ -5,6 +5,8 @@ import Card from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import Link from "next/link";
+import { Container } from "@mui/system";
+
 
 export const Section = style.section`
     height: 100vh;
@@ -12,6 +14,14 @@ export const Section = style.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 600px) {
+        height:170vh;
+      }
+      
+      @media (max-width: 768px) {
+        height:170vh;
+      }
 `;
 
 export const Title = style.h1`
@@ -51,12 +61,27 @@ export const PlayButton = style(Link)`
 
 //Testimony
 export const Section3 = style.section`
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     background-color: #575B81;
     justify-content: center;
+    @media (max-width: 600px) {
+        height: 170vh;
+      }
+    @media (min-width: 600px) and (max-width: 768px) {
+        height: 130vh;
+      }
 `;
+// export const CustomContainer = style(Container)`
+//     height: 80vh;
+//     @media (max-width: 600px){
+//         height:170vh;
+//     }
+//     @media (max-width: 768px){
+//         height:130vh;
+//     }
+// `;
 
 export const Title2 = style.h1`
     font-family: 'Poppins';
@@ -97,6 +122,7 @@ export const CustomCard = styled(Card)`
   padding: 10px;
   border: 2px solid orange;
   border-radius: 10px;
+  margin: auto;
 `;
 
 export const CustomCard2 = styled(Card)`
@@ -106,6 +132,7 @@ export const CustomCard2 = styled(Card)`
   padding: 10px;
   border: 2px solid white;
   border-radius: 10px;
+  margin: auto;
 `;
 
 export const Subheader = styled(Typography)`
@@ -128,6 +155,14 @@ export const Section4 = style.section`
     flex-direction: column;
     margin: 20px 0px;
     justify-content: center;
+    
+    @media (max-width: 600px) {
+        height:170vh;
+      }
+      
+      @media (max-width: 768px) {
+        height:170vh;
+      }
 `;
 
 export const Title3 = style.h1`
@@ -172,7 +207,6 @@ export const Subtitle5 = style.h6`
 `;
 
 export const CustomCard3 = styled(Card)`
-  width: 1092px;
   height: 169px;
   background-color: #575b81;
   padding: 30px;
