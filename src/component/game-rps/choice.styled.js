@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Image from "next/image";
+import { Grid } from "@mui/material";
 
 export const Icon = styled(Image)`
-  width: 96px;
-  height: 92px;
+  width: 6.2em;
+  height: 6em;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -50,15 +51,32 @@ export const Rock = `
 export const Scissors = `
   background-image: url("../../assets/gunting.svg");
 `;
-export const PcChoice = styled.div`
+export const PcChoice = styled(Grid)`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 60vh;
   justify-content: space-between;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+  @media (max-width: 900px) {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 5em;
+    width: 1em;
+  }
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+  @media (max-width: 1536px) {
+    flex-direction: column;
+  }
 `;
-export const Game = styled.div`
+export const Game = styled(Grid)`
   height: 100%;
+
   justify-content: space-between !important;
 `;
 export const TextComputer = styled.div``;

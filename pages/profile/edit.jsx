@@ -1,6 +1,8 @@
 import Grid from "@mui/material/Grid";
 
 import { Button, TextField, Avatar } from "@mui/material/";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import React, { useState, useEffect } from "react";
 import {
@@ -21,7 +23,7 @@ import { Title } from "../../styles/me.module";
 import withAuth from "../../src/withAuth";
 
 function Me() {
-  const [state, setState] = useState({
+  const [value, setValue] = useState({
     username: "",
     email: "",
     first_name: "",
@@ -35,42 +37,38 @@ function Me() {
   );
   const userInfo = useSelector((state) => state.authReducer);
 
-  const [username, setUsername] = useState(profile);
-  const [userEmail, setEmail] = useState(userInfo);
-  const [firstName, setFirstName] = useState(
-    userInfo ? userInfo.first_name : ""
-  );
-  const [lastName, setLastName] = useState(userInfo ? userInfo.last_name : "");
-
-  const handleChange = (e) => {
-    let { name, state } = e.target;
-    if (e.target.name === "avatar") {
-      state = e.target.files[0];
-      // setValue({ avatarPreview: createPreviewImage(value) });
-    } else {
-      state = e.target.value;
-    }
-    setState({ ...state, [name]: state });
+  const handleChange = (name) => (e) => {
+    setValue({ ...value, [name]: e.target.value });
   };
   const createPreviewImage = (file) => URL.createObjectURL(file);
-  const changeProfile = (e) => {
+
+  const changeProfile = async () => {
+    const body = {
+      first_name: value.first_name,
+      last_name: value.last_name,
+      email: value.email,
+      username: value.username,
+    };
+
     try {
-      dispatch(updateProfile(username, email, first_name, last_name));
+      await dispatch(updateProfile(body));
+      console.log(body);
     } catch (error) {}
   };
 
   return (
     <React.Fragment>
-      <ProfileContainer maxWidth="sm">
+      <ProfileContainer maxWidth="lg">
+        <ToastContainer />
         <Grid
           container
           spacing={5}
           p="2 5"
-          columns={1}
+          columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 3 }}
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ mt: 0 }}>
+          sx={{ m: 0, pt: 1 / 2 }}>
           <Title>Edit Profile</Title>
           <Grid
             container
@@ -84,31 +82,29 @@ function Me() {
           <Grid item columns={{ xs: 2, sm: 4, md: 4 }} sx={{ p: 5 }}>
             <EditProfileForm>
               <TxtField
-                id="username"
                 label="Username"
-                name="username"
-                variant="filled"
-                onChange={(e) => setUsername(e.target.value)}></TxtField>
+                type="string"
+                onChange={handleChange("username")}
+                required
+                variant="filled"></TxtField>
               <TxtField
-                id="email"
                 label="Email"
-                name="email"
-                variant="filled"
-                onChange={handleChange}></TxtField>
-              <TxtField
+                type="email"
+                onChange={handleChange("email")}
                 required
-                id="firstName"
-                label="First Name"
-                name="first_name"
-                variant="filled"
-                onChange={(e) => setFirstName(e.target.value)}></TxtField>
+                variant="filled"></TxtField>
               <TxtField
+                label="First name"
+                type="string"
+                onChange={handleChange("first_name")}
                 required
-                id="lastName"
-                label="Last Name"
-                name="last_name"
-                variant="filled"
-                onChange={(e) => setLastName(e.target.value)}></TxtField>
+                variant="filled"></TxtField>
+              <TxtField
+                label="Username"
+                type="string"
+                onChange={handleChange("last_name")}
+                required
+                variant="filled"></TxtField>
               <EditProfileBtn variant="contained" onClick={changeProfile}>
                 Edit Profile
               </EditProfileBtn>

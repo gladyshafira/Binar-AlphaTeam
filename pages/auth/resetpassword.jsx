@@ -4,8 +4,9 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Title } from "@mui/material/";
 import { useDispatch, useSelector } from "react-redux";
-import { forgotPassword } from "../../src/store/actions/authActions";
 import Router from "next/router";
+import "react-toastify/dist/ReactToastify.css";
+import { resetPassword } from "../../src/store/actions/authActions";
 
 export default function Forgot() {
   const [value, setValue] = useState({

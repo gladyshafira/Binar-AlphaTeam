@@ -1,9 +1,8 @@
 import React, { useEffect } from "react"
-import { Image, Section, Subtitle, Title } from "./styled"
+import { Image, Section, Subtitle, Title, CustomContainer } from "./styled"
 import Card from "@mui/material/Card"
 import CardContent from "@mui/material/CardContent"
 import { Grid } from "@mui/material"
-import { Container } from "@mui/system"
 import { useDispatch, useSelector } from "react-redux"
 import { getGameList } from "../../store/actions/gameActions"
 import HoverVideoPlayer from "react-hover-video-player"
@@ -20,13 +19,12 @@ export default function GamesList() {
   }
 
   return (
-    <Container>
+    <CustomContainer>
       <Section id='games-list'>
         <Title>Games List</Title>
         <Grid
           container
           spacing={{ xs: 1, md: 2 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
           justifyContent='center'
           alignItems='center'>
             {gameList.map((item) => {
@@ -36,7 +34,7 @@ export default function GamesList() {
               key={item?.id}
               xs={6}
               sm={6}
-              md={4}
+              md={6}
               lg={4}
               xl={4}
               justifyContent='center'
@@ -63,6 +61,7 @@ export default function GamesList() {
                       <div className='loading-spinner' />
                     </div>
                   }
+                  
                 />
                 {/* <Image src={item?.thumbnail_url}></Image> */}
                 <CardContent>
@@ -77,6 +76,6 @@ export default function GamesList() {
         })}
         </Grid>
       </Section>
-    </Container>
+    </CustomContainer>
   )
 }

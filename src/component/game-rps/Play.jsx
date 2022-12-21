@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as Components from "./gamerps.styled";
+import { Container } from "@mui/system";
 import Com from "./Com";
 import Scoreboard from "./Scoreboard";
 import Result from "./Result";
@@ -70,12 +71,7 @@ export default function Play() {
     }
   }, [game.round]);
 
-  // const fetchProfile = async () => {
-  //   await dispatch(getProfile());
-  // };
-  // useEffect(() => {
-  //   fetchProfile();
-  // }, []);
+  const username = useSelector((state) => state.authReducer.profile);
   const userId = useSelector((state) => state.authReducer.user_id);
 
   const postScore = async () => {
@@ -150,54 +146,56 @@ export default function Play() {
     <>
       {/* <Navbar /> */}
       <Components.GlobalStyle />
-      <Components.Wrapper>
-        <Components.Row>
-          <Components.Col>
-            <Components.Game>
-              <Components.PlayerChoice>
-                <h3>Player 1</h3>
-                <Choice.Icon
-                  src="/assets/batu.svg"
-                  data-id="rock"
-                  onClick={play}
-                  width="96"
-                  height="92"
-                  alt="rock"></Choice.Icon>
-                <Choice.Icon
-                  src="/assets/kertas.svg"
-                  data-id="paper"
-                  onClick={play}
-                  width="96"
-                  height="92"
-                  alt="paper"></Choice.Icon>
-                <Choice.Icon
-                  src="/assets/gunting.svg"
-                  data-id="scissors"
-                  onClick={play}
-                  width="96"
-                  height="92"
-                  alt="scissors"></Choice.Icon>
-                <Player {...game}></Player>
-              </Components.PlayerChoice>
-            </Components.Game>
-          </Components.Col>
-          <Components.Col>
-            <Result {...game}></Result>
-          </Components.Col>
+      <Container>
+        <Components.Wrapper>
+          <Components.Row columns={{ md: 1 }}>
+            <Components.Col>
+              <Components.Game>
+                <Components.PlayerChoice>
+                  <h3>{username}</h3>
+                  <Choice.Icon
+                    src="/assets/batu.svg"
+                    data-id="rock"
+                    onClick={play}
+                    width="96"
+                    height="92"
+                    alt="rock"></Choice.Icon>
+                  <Choice.Icon
+                    src="/assets/kertas.svg"
+                    data-id="paper"
+                    onClick={play}
+                    width="96"
+                    height="92"
+                    alt="paper"></Choice.Icon>
+                  <Choice.Icon
+                    src="/assets/gunting.svg"
+                    data-id="scissors"
+                    onClick={play}
+                    width="96"
+                    height="92"
+                    alt="scissors"></Choice.Icon>
+                  <Player {...game}></Player>
+                </Components.PlayerChoice>
+              </Components.Game>
+            </Components.Col>
+            <Components.Col>
+              <Result {...game}></Result>
+            </Components.Col>
 
-          <Components.Col>
-            <Components.PcChoice>
-              <Com {...game}></Com>
-            </Components.PcChoice>
-          </Components.Col>
-        </Components.Row>
-        <Components.ResetRow>
-          <Reset onClick={reset} />
-        </Components.ResetRow>
-        <div>
-          <Scoreboard score={score} round={round} />
-        </div>
-      </Components.Wrapper>
+            <Components.Col>
+              <Components.PcChoice>
+                <Com {...game}></Com>
+              </Components.PcChoice>
+            </Components.Col>
+          </Components.Row>
+          <Components.ResetRow>
+            <Reset onClick={reset} />
+          </Components.ResetRow>
+          <div>
+            <Scoreboard score={score} round={round} />
+          </div>
+        </Components.Wrapper>
+      </Container>
     </>
   );
 }
